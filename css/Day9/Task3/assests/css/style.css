@@ -1,0 +1,36 @@
+<style>
+        .container {
+            display: flex;
+            padding: 40px;
+            
+        }
+
+        .card {
+            width: 200px;
+            padding: 15px;
+            border: 1px solid gray;
+            border-radius: 10px;
+
+            
+           
+        }
+
+        .card img {
+            width: 180px;
+            height: 150px;
+        }
+
+        .card:hover {
+             transition: 0.4s;
+            transform: translateY(-10px);
+            
+        }
+
+        .card button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>

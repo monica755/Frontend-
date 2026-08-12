@@ -1,0 +1,22 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+head {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.border {
+    background-color: rgb(201, 153, 245);
+    width: 400px;
+    height: 300px;
+    border: solid 2px;
+
+}
+.border img {
+    width: 170px;
+    height: 180px;
+}

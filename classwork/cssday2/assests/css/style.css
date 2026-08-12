@@ -1,0 +1,17 @@
+div{
+    background-color: cadetblue;
+    color: black;
+    text-align: center;
+}
+.studentinfo
+{
+    background-color: antiquewhite;
+    color: black;
+    text-align: center;
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Patient Registration Form</title>
+</head>
+<body>
+    <center>
+
+    <h2>Hospital Patient Registration Form</h2><hr>
+
+    <form>
+
+        <label>Patient ID:</label><br>
+        <input type="text" name="pid"><br><br>
+
+        <label>Patient Name:</label><br>
+        <input type="text" name="pname"><br><br>
+
+        <label>Age:</label><br>
+        <input type="number" name="age"><br><br>
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female
+        <input type="radio" name="gender"> Other
+        <br><br>
+
+        <label>Blood Group:</label><br>
+        <select>
+            <option>Select Blood Group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>O+</option>
+            <option>O-</option>
+        </select>
+        <br><br>
+
+        <label>Doctor:</label><br>
+        <select>
+            <option>Select Doctor</option>
+            <option>Dr. Kumar</option>
+            <option>Dr. Priya</option>
+            <option>Dr. Rajesh</option>
+        </select>
+        <br><br>
+
+        <label>Appointment Date:</label><br>
+        <input type="date"><br><br>
+
+        <label>Symptoms:</label><br>
+        <textarea rows="4" cols="30"></textarea><br><br>
+
+        <label>Medical Report Upload:</label><br>
+        <input type="file"><br><br>
+
+        <input type="submit" value="Register">
+        <input type="reset" value="Clear">
+
+    </form>
+
+    <h2>Patient Details</h2>
+
+    <table border="1">
+        <tr>
+            <th>Patient ID</th>
+            <th>Patient Name</th>
+            <th>Doctor</th>
+            <th>Blood Group</th>
+            <th>Appointment Date</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>P101</td>
+            <td>Dhanam</td>
+            <td>Dr. Kumar</td>
+            <td>O+</td>
+            <td>22-07-2026</td>
+            <td>Confirmed</td>
+        </tr>
+
+        <tr>
+            <td>P102</td>
+            <td>Anbu</td>
+            <td>Dr. Anitha</td>
+            <td>A+</td>
+            <td>23-07-2026</td>
+            <td>Pending</td>
+        </tr>
+
+    </table>
+</center>
+</body>
+</html>

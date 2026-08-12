@@ -1,0 +1,10 @@
+1. A Semantic tag provides meaningful content
+2. Better SEO, Better Accessibility, Better Readability and Better Maintainability
+3. header, nav, main, section and article
+4. Non-semantic tag are div and span
+5. Semantic tags provide meaning while non-semantic tags do not provide meaning.
+6. The paragraph tag is used to display textual content in a structured manner.
+7. Yes, paragraph a Block-level element
+8. <main> tag represents Main content
+9. <nav> tag represents navigation content
+10.<article> tag represents Independent content

@@ -1,0 +1,64 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: darkblue;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .services {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            flex: 1;
+            padding: 30px 15px;
+            background-color: lightgray;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px gray;
+        }
+
+        .card h2 {
+            font-size: 22px;
+        }
+
+        .card p {
+            font-size: 16px;
+        }
+
+    
+        @media (max-width: 768px) {
+
+            body {
+                background-color: lightblue;
+            }
+
+            h1 {
+                color: darkred;
+                font-size: 26px;
+            }
+
+            .services {
+                flex-direction: column;
+            }
+
+            .card h2 {
+                font-size: 18px;
+            }
+
+            .card p {
+                font-size: 14px;
+            }
+        }

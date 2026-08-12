@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+.student{
+    background-color: cornflowerblue;
+    height: 150px;
+    width: 450px;
+}
+.idcard{
+        background-color: darkorange;
+        height: 300px;
+        width: 450px;
+        padding-top:60px;
+}
+    

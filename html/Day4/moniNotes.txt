@@ -1,0 +1,51 @@
+HTML Elements Notes
+
+HTML elements are grouped based on how they behave on a webpage.
+
+1. Block-Level Elements
+
+
+A Block-Level Element always starts on a new line and takes up the full width available.
+
+Characteristics
+Starts on a new line.
+Takes the full width of its parent.
+Can contain block and inline elements.
+Used to create the structure of a webpage.
+Syntax
+<tag>Content</tag>
+
+2. Inline Elements
+
+
+Inline elements do not start on a new line. They only take as much width as needed.
+
+Characteristics:
+->Stay on the same line.
+->Occupy only required width.
+->Used inside block elements.
+
+
+3.Formatting Elements
+
+
+Formatting elements are used to change the appearance or meaning of text.
+
+Common Formatting Elements
+Element	Purpose
+<b>	Bold
+<strong>	Strong importance
+<i>	Italic
+
+
+4. Interactive Elements
+
+
+Interactive elements allow the user to interact with the webpage.
+
+Common Interactive Elements
+Element	Purpose
+<a>	Hyperlink
+<button>	Button
+<input>	Input field
+<textarea>	Multi-line input
