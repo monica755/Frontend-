@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Development - All Tasks & Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --surface-hover: #334155;
+            --border-color: #334155;
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --badge-html-bg: #ea580c;
+            --badge-html-txt: #ffedd5;
+            --badge-css-bg: #0284c7;
+            --badge-css-txt: #e0f2fe;
+            --badge-bs-bg: #7c3aed;
+            --badge-bs-txt: #ede9fe;
+            --badge-proj-bg: #059669;
+            --badge-proj-txt: #d1fae5;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2.5rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge-header {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.825rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.9rem;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 60%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.6rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .stat-num {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Search and Filter Controls */
+        .controls-wrapper {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.85rem 1rem 0.85rem 3rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-main);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-btn {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            color: var(--text-main);
+            border-color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: #0f172a;
+            border-color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Task Cards Grid */
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .task-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .task-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45);
+        }
+
+        .task-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: transparent;
+            transition: var(--transition);
+        }
+
+        .task-card[data-category="html"]::before { background: var(--badge-html-bg); }
+        .task-card[data-category="css"]::before { background: var(--badge-css-bg); }
+        .task-card[data-category="bs"]::before { background: var(--badge-bs-bg); }
+        .task-card[data-category="project"]::before { background: var(--badge-proj-bg); }
+        .task-card[data-category="test"]::before { background: #eab308; }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-day {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tag-html { background: rgba(234, 88, 12, 0.15); color: #fb923c; border: 1px solid rgba(234, 88, 12, 0.3); }
+        .tag-css { background: rgba(2, 132, 199, 0.15); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.3); }
+        .tag-bs { background: rgba(124, 58, 237, 0.15); color: #c084fc; border: 1px solid rgba(124, 58, 237, 0.3); }
+        .tag-proj { background: rgba(5, 150, 105, 0.15); color: #34d399; border: 1px solid rgba(5, 150, 105, 0.3); }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+            line-height: 1.35;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .card-path {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: monospace;
+            max-width: 190px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.825rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .task-card:hover .card-action {
+            transform: translateX(3px);
+        }
+
+        /* Empty State */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 4rem 1rem;
+            background: var(--surface-color);
+            border: 1px dashed var(--border-color);
+            border-radius: var(--radius-lg);
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+        }
+
+        .no-results p {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .task-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <span class="badge-header">Interactive Learning Hub</span>
+            <h1>Frontend Mastery Task Portal</h1>
+            <p class="subtitle">Complete collection of hands-on frontend exercises, projects, and component designs covering HTML5, CSS3, Bootstrap 5, and multi-page web applications.</p>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-num" id="totalTasksCount">0</span>
+                <span class="stat-label">Total Tasks</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">31</span>
+                <span class="stat-label">HTML5 Modules</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">28</span>
+                <span class="stat-label">CSS3 Modules</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">7</span>
+                <span class="stat-label">Bootstrap Modules</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">7</span>
+                <span class="stat-label">Full Projects</span>
+            </div>
+        </div>
+
+        <!-- Controls: Search & Category Filters -->
+        <div class="controls-wrapper">
+            <div class="search-box">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="taskSearch" class="search-input" placeholder="Search tasks by name, topic (e.g. form, table, flexbox, day 5, video, navbar)...">
+            </div>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Tasks (<span id="allCount">0</span>)</button>
+                <button class="filter-btn" data-filter="html">HTML5 (<span id="htmlCount">0</span>)</button>
+                <button class="filter-btn" data-filter="css">CSS3 (<span id="cssCount">0</span>)</button>
+                <button class="filter-btn" data-filter="bs">Bootstrap (<span id="bsCount">0</span>)</button>
+                <button class="filter-btn" data-filter="project">Projects & School (<span id="projCount">0</span>)</button>
+                <button class="filter-btn" data-filter="test">Tests & Assignments (<span id="testCount">0</span>)</button>
+            </div>
+        </div>
+
+        <!-- Task Grid Container -->
+        <div class="task-grid" id="taskList">
+
+            <!-- ===================== HTML TASKS ===================== -->
+
+            <!-- HTML Day 1 -->
+            <a href="html/Day1/index.html" class="task-card" data-category="html" data-tags="day1 intro basics">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 1</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Introduction to HTML</h3>
+                <p class="card-desc">Basic HTML document structure, essential heading tags (H1-H6), and paragraph elements.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 2 -->
+            <a href="html/Day2/story.html" class="task-card" data-category="html" data-tags="day2 story text typography">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 2</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Story Page</h3>
+                <p class="card-desc">Narrative story layout with paragraph formatting, bold, italics, and line break tags.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day2/story.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 3 -->
+            <a href="html/Day3/company.html" class="task-card" data-category="html" data-tags="day3 company corporate profile">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 3</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Company Profile Page</h3>
+                <p class="card-desc">Structured corporate profile highlighting company services, mission, and contact details.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day3/company.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day3/profile.html" class="task-card" data-category="html" data-tags="day3 personal profile resume bio">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 3</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Personal Profile Page</h3>
+                <p class="card-desc">Personal bio page featuring skills, education, and career aspirations.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day3/profile.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 4 -->
+            <a href="html/Day4/block.html" class="task-card" data-category="html" data-tags="day4 block elements div section">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 4</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Block Elements</h3>
+                <p class="card-desc">Demonstration of block-level HTML tags and container grouping behavior.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day4/block.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day4/formatting.html" class="task-card" data-category="html" data-tags="day4 formatting mark small del ins sub sup">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 4</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Text Formatting Tags</h3>
+                <p class="card-desc">Exploring mark, sub, sup, del, ins, strong, em, and other rich text formatting tags.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day4/formatting.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day4/inline.html" class="task-card" data-category="html" data-tags="day4 inline elements span strong em a">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 4</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Inline Elements</h3>
+                <p class="card-desc">Comprehensive review of inline-level tags, anchor links, and inline text spans.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day4/inline.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day4/interactive.html" class="task-card" data-category="html" data-tags="day4 interactive details summary dialog">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 4</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Interactive Elements</h3>
+                <p class="card-desc">Native interactive collapsible accordions using details and summary tags.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day4/interactive.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 5 -->
+            <a href="html/Day5/task1.html" class="task-card" data-category="html" data-tags="day5 list ol ul task1">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 5</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Lists: Task 1</h3>
+                <p class="card-desc">Ordered and unordered lists showcasing course subjects and step-by-step guides.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day5/task1.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day5/task2.html" class="task-card" data-category="html" data-tags="day5 list nested task2">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 5</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Lists: Task 2 (Nested)</h3>
+                <p class="card-desc">Multi-level nested lists representing hierarchical directories and menus.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day5/task2.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day5/task3.html" class="task-card" data-category="html" data-tags="day5 dl dt dd definition list task3">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 5</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Lists: Task 3 (Definition Lists)</h3>
+                <p class="card-desc">Dictionary and glossary representation using definition term and description tags.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day5/task3.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day5/task4.html" class="task-card" data-category="html" data-tags="day5 mixed lists task4">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 5</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Lists: Task 4 (Mixed Lists)</h3>
+                <p class="card-desc">Hybrid lists combining ordered, unordered, and descriptive structures.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day5/task4.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day5/task5.html" class="task-card" data-category="html" data-tags="day5 comprehensive list task5">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 5</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Lists: Task 5 (Advanced Practice)</h3>
+                <p class="card-desc">Deep nesting and styling of complex navigation list components.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day5/task5.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 6 -->
+            <a href="html/Day6/collegewebsite.html" class="task-card" data-category="html" data-tags="day6 college university website campus">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 6</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">College Portal Page</h3>
+                <p class="card-desc">College information portal with departments, faculty list, and campus photos.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day6/collegewebsite.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day6/imagegallery.html" class="task-card" data-category="html" data-tags="day6 image gallery photos showcase">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 6</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Image Gallery</h3>
+                <p class="card-desc">Pure HTML photo showcase featuring responsive image dimensions and captions.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day6/imagegallery.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day6/myfavourite.html" class="task-card" data-category="html" data-tags="day6 favourites hobbies books movies">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 6</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">My Favourite Things</h3>
+                <p class="card-desc">Curated catalog of favorite books, movies, sports, and tourist destinations.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day6/myfavourite.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day6/studentprofile.html" class="task-card" data-category="html" data-tags="day6 student profile card id bio">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 6</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Student Profile Page</h3>
+                <p class="card-desc">Detailed student bio card with academic details, roll number, and contact info.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day6/studentprofile.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day6/googlelinkpage.html" class="task-card" data-category="html" data-tags="day6 hyperlinks external links search">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 6</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Google Link Directory</h3>
+                <p class="card-desc">Curated directory of external Google service hyperlinks and research bookmarks.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day6/googlelinkpage.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day6/openlink.html" class="task-card" data-category="html" data-tags="day6 links target blank navigation">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 6</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Open Link Explorer</h3>
+                <p class="card-desc">Testing internal anchor links, target attributes, and bookmark jump navigation.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day6/openlink.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 7 Multi-Page Projects -->
+            <a href="html/Day7/task1/index.html" class="task-card" data-category="html" data-tags="day7 multipage task1 products ecommerce">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 7</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Multi-Page Website: Task 1</h3>
+                <p class="card-desc">Connected multi-page website architecture featuring a home page and products catalog.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day7/task1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day7/task2/index.html" class="task-card" data-category="html" data-tags="day7 multipage task2 public services">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 7</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Public Services Portal: Task 2</h3>
+                <p class="card-desc">Government & community service hub linking Education and Police department pages.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day7/task2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 8 Forms -->
+            <a href="html/Day8/contact.html" class="task-card" data-category="html" data-tags="day8 forms contact support">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 8</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Contact Us Form</h3>
+                <p class="card-desc">Interactive inquiry form with input fields, message area, and validation attributes.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day8/contact.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day8/feedback.html" class="task-card" data-category="html" data-tags="day8 forms feedback rating survey">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 8</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Customer Feedback Form</h3>
+                <p class="card-desc">Rating sliders, satisfaction radio buttons, and review submission fields.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day8/feedback.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day8/jobapplication.html" class="task-card" data-category="html" data-tags="day8 forms job career application resume">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 8</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Job Application Form</h3>
+                <p class="card-desc">Comprehensive job portal form with file uploads, experience fields, and qualifications.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day8/jobapplication.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day8/login.html" class="task-card" data-category="html" data-tags="day8 forms login auth password">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 8</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Login Authentication Form</h3>
+                <p class="card-desc">Clean sign-in interface with email, password masking, and remember me toggle.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day8/login.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day8/regform.html" class="task-card" data-category="html" data-tags="day8 forms registration signup user">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 8</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">User Registration Form</h3>
+                <p class="card-desc">Complete account creation form with gender, DOB, dropdown selectors, and terms checkbox.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day8/regform.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 9 Tables -->
+            <a href="html/Day9/employee.html" class="task-card" data-category="html" data-tags="day9 tables employee salary hr">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 9</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Employee Records Table</h3>
+                <p class="card-desc">Structured company personnel table with designations, departments, and payroll info.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day9/employee.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day9/hospital.html" class="task-card" data-category="html" data-tags="day9 tables hospital medical patient">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 9</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Hospital Management Table</h3>
+                <p class="card-desc">Healthcare database table for doctor schedules, patient IDs, and ward allocations.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day9/hospital.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day9/product.html" class="task-card" data-category="html" data-tags="day9 tables product pricing ecommerce">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 9</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Product Pricing Table</h3>
+                <p class="card-desc">E-commerce inventory and pricing matrix using table headers, colspans, and rowspans.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day9/product.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day9/recclg.html" class="task-card" data-category="html" data-tags="day9 tables college timetable departments">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 9</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">College Timetable & Records</h3>
+                <p class="card-desc">Complex timetable layout with merged header cells, lab sessions, and lecture periods.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day9/recclg.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day9/SLAform.html" class="task-card" data-category="html" data-tags="day9 tables sla form admission agreement">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 9</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">SLA & Student Contract Form</h3>
+                <p class="card-desc">Hybrid document integrating data tables with official agreement form elements.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day9/SLAform.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 10 Semantic Pages -->
+            <a href="html/Day10/clgadmission.html" class="task-card" data-category="html" data-tags="day10 college admission semantic html5">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 10</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">College Admission Portal</h3>
+                <p class="card-desc">Full semantic structure utilizing header, nav, section, article, aside, and footer.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day10/clgadmission.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day10/docstructure.html" class="task-card" data-category="html" data-tags="day10 document semantic layout">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 10</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Semantic Document Structure</h3>
+                <p class="card-desc">Architectural blueprint of modern semantic HTML5 web document standards.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day10/docstructure.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day10/itcompany.html" class="task-card" data-category="html" data-tags="day10 it company corporate semantic">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 10</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">IT Services Company Page</h3>
+                <p class="card-desc">Software enterprise portal highlighting tech stacks, client reviews, and service packages.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day10/itcompany.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day10/portflio.html" class="task-card" data-category="html" data-tags="day10 portfolio developer resume semantic">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 10</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Developer Portfolio Page</h3>
+                <p class="card-desc">Personal developer portfolio showcase with project cards, skill badges, and contact section.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day10/portflio.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day10/travel.html" class="task-card" data-category="html" data-tags="day10 travel tourism vacation destination">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 10</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Travel & Tourism Guide</h3>
+                <p class="card-desc">Vacation discovery guide featuring destination highlights, travel packages, and photo cards.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day10/travel.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- HTML Day 11 Multimedia & Embeds -->
+            <a href="html/Day11/alltask.html" class="task-card" data-category="html" data-tags="day11 media audio video iframe maps pdf showcase">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 11</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Media Showcase Master</h3>
+                <p class="card-desc">Complete showcase aggregating audio, video players, Google Maps, YouTube, and PDF embeds.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day11/alltask.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day11/audio.html" class="task-card" data-category="html" data-tags="day11 audio music sound player mp3">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 11</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">HTML5 Audio Player</h3>
+                <p class="card-desc">Custom audio integration featuring controls, autoplay, and audio source types.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day11/audio.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day11/video.html" class="task-card" data-category="html" data-tags="day11 video movie player mp4">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 11</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">HTML5 Video Player</h3>
+                <p class="card-desc">Responsive video player with controls, autoplay, custom width/height and fallbacks.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day11/video.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day11/iframe.html" class="task-card" data-category="html" data-tags="day11 iframe youtube maps embed">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 11</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Iframe & Interactive Maps</h3>
+                <p class="card-desc">Embedding external content: YouTube video player and interactive Google Maps location frame.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day11/iframe.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/Day11/imagetask.html" class="task-card" data-category="html" data-tags="day11 images butterfly gallery gallery">
+                <div class="card-top">
+                    <span class="card-day">HTML • Day 11</span>
+                    <span class="card-tag tag-html">HTML5</span>
+                </div>
+                <h3 class="card-title">Butterfly Photo Showcase</h3>
+                <p class="card-desc">High-resolution image gallery showcasing nature photography and responsive image scaling.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/Day11/imagetask.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="html/wikipedia/home.html" class="task-card" data-category="project" data-tags="wikipedia clone encyclopedia html project">
+                <div class="card-top">
+                    <span class="card-day">Project • Wikipedia</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">Wikipedia Home Clone</h3>
+                <p class="card-desc">Faithful Wikipedia portal layout featuring multilingual search and top knowledge portals.</p>
+                <div class="card-footer">
+                    <span class="card-path">html/wikipedia/home.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- ===================== CSS TASKS ===================== -->
+
+            <!-- CSS Assignment -->
+            <a href="css/Assignment/index.html" class="task-card" data-category="test" data-tags="css assignment landing page project">
+                <div class="card-top">
+                    <span class="card-day">CSS • Assignment</span>
+                    <span class="card-tag tag-proj">Assignment</span>
+                </div>
+                <h3 class="card-title">CSS Master Assignment</h3>
+                <p class="card-desc">Polished responsive landing page implementing modern typography, navigation, and cards.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Assignment/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 1 -->
+            <a href="css/Day1/index.html" class="task-card" data-category="css" data-tags="css day1 external stylesheet basics">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 1</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">External CSS Basics</h3>
+                <p class="card-desc">Introduction to external stylesheets, basic selectors, and element color styling.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day1/internal.html" class="task-card" data-category="css" data-tags="css day1 internal style tag">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 1</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Internal CSS Styling</h3>
+                <p class="card-desc">Applying embedded stylesheet rules within the document head for rapid styling.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day1/internal.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 2 -->
+            <a href="css/Day2/challenge.html" class="task-card" data-category="css" data-tags="css day2 challenge box styling">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 2</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">CSS Style Challenge</h3>
+                <p class="card-desc">Solving advanced styling challenges with backgrounds, shadows, and typography.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day2/challenge.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day2/clgdeptpage.html" class="task-card" data-category="css" data-tags="css day2 college department design">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 2</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Styled College Department Page</h3>
+                <p class="card-desc">Vibrant academic department showcase styled with modern color palettes and cards.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day2/clgdeptpage.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day2/company.html" class="task-card" data-category="css" data-tags="css day2 company profile corporate">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 2</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Corporate Company Page</h3>
+                <p class="card-desc">Professional corporate styling with hero banners, service cards, and footer layout.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day2/company.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day2/fav.html" class="task-card" data-category="css" data-tags="css day2 favourites cards styling">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 2</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Styled Favourites Showcase</h3>
+                <p class="card-desc">Card-based visual presentation of favorite interests with borders and gradients.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day2/fav.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day2/personalprofile.html" class="task-card" data-category="css" data-tags="css day2 profile card bio">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 2</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Personal Bio Card</h3>
+                <p class="card-desc">User profile avatar card featuring circular images, subtle shadows, and badge tags.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day2/personalprofile.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day2/studentid.html" class="task-card" data-category="css" data-tags="css day2 student id card badge identity">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 2</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Student Identity Card (ID)</h3>
+                <p class="card-desc">Realistic plastic ID card design with barcode, photo frame, and institutional header.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day2/studentid.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 3 -->
+            <a href="css/Day3/index.html" class="task-card" data-category="css" data-tags="css day3 fonts colors background typography">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 3</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Colors & Typography</h3>
+                <p class="card-desc">Google Fonts integration, font weights, line heights, gradients, and text shadows.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day3/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 4 Box Model -->
+            <a href="css/Day4/Task_1/index.html" class="task-card" data-category="css" data-tags="css day4 box model margin padding border">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 4</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Box Model: Task 1</h3>
+                <p class="card-desc">Understanding box model dimensions: content width, padding, border, and margins.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day4/Task_1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day4/Task_2/index.html" class="task-card" data-category="css" data-tags="css day4 margin padding spacing">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 4</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Box Model: Task 2 (Spacing)</h3>
+                <p class="card-desc">Spacing mastery using directional margin, padding shorthand, and auto-centering.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day4/Task_2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day4/Task_3/index.html" class="task-card" data-category="css" data-tags="css day4 borders outline radius">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 4</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Box Model: Task 3 (Borders)</h3>
+                <p class="card-desc">Custom border radius, styled border types (dashed, solid, double), and outlines.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day4/Task_3/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day4/Task_4/index.html" class="task-card" data-category="css" data-tags="css day4 display inline block inline-block">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 4</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Box Model: Task 4 (Display)</h3>
+                <p class="card-desc">Comparing block, inline, inline-block, and none display property behaviors.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day4/Task_4/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day4/Task_5/index.html" class="task-card" data-category="css" data-tags="css day4 box-sizing border-box">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 4</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Box Model: Task 5 (Box-Sizing)</h3>
+                <p class="card-desc">Deep dive into border-box vs content-box calculation in real-world layouts.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day4/Task_5/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 5 Positioning -->
+            <a href="css/Day5/index.html" class="task-card" data-category="css" data-tags="css day5 position relative absolute fixed sticky z-index">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 5</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">CSS Positioning & Z-Index</h3>
+                <p class="card-desc">Hands-on mastery of relative, absolute, fixed, and sticky positioning with layering.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day5/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 6 Flexbox -->
+            <a href="css/Day6/Task1/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox flex-direction align justify">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 6</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Flexbox: Task 1 (Basics)</h3>
+                <p class="card-desc">Establishing flex containers, main-axis vs cross-axis alignment, and item flow.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day6/Task1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day6/Task2/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox justify-content align-items">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 6</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Flexbox: Task 2 (Alignment)</h3>
+                <p class="card-desc">Space-between, space-around, space-evenly, and perfect center positioning.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day6/Task2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day6/Task3/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox flex-wrap gap">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 6</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Flexbox: Task 3 (Flex-Wrap)</h3>
+                <p class="card-desc">Responsive wrapping behavior and gap spacing for multi-item catalogs.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day6/Task3/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day6/Task4/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox card layout project">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 6</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Flexbox: Task 4 (Card Layout)</h3>
+                <p class="card-desc">Building responsive product card grids with equal height columns using Flexbox.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day6/Task4/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 9 Grid -->
+            <a href="css/Day9/Task1/index.html" class="task-card" data-category="css" data-tags="css day9 grid display-grid template-columns">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 9</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">CSS Grid: Task 1 (Basics)</h3>
+                <p class="card-desc">2D Grid layout system with grid-template-columns, rows, and fr units.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day9/Task1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day9/Task2/index.html" class="task-card" data-category="css" data-tags="css day9 grid template areas header aside footer">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 9</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">CSS Grid: Task 2 (Template Areas)</h3>
+                <p class="card-desc">Named grid areas for complete web page layout (Header, Nav, Sidebar, Main, Footer).</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day9/Task2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day9/Task3/index.html" class="task-card" data-category="css" data-tags="css day9 grid auto-fit minmax responsive">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 9</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">CSS Grid: Task 3 (Responsive Grid)</h3>
+                <p class="card-desc">Auto-fit and minmax formulas for responsive card layouts without media queries.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day9/Task3/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day9/Task4/index.html" class="task-card" data-category="css" data-tags="css day9 grid photo gallery masonry">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 9</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">CSS Grid: Task 4 (Photo Gallery)</h3>
+                <p class="card-desc">Masonry-inspired photo gallery utilizing spans across columns and rows.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day9/Task4/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day9/Task5/index.html" class="task-card" data-category="css" data-tags="css day9 grid complex dashboard">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 9</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">CSS Grid: Task 5 (Complex Layout)</h3>
+                <p class="card-desc">Advanced multi-tier dashboard layout combining CSS Grid and nested Flexbox items.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day9/Task5/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Day 10 Animations & Responsive -->
+            <a href="css/Day10/task1/index.html" class="task-card" data-category="css" data-tags="css day10 transitions hover transform">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 10</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Transitions & Hover: Task 1</h3>
+                <p class="card-desc">Smooth interactive transitions, button scaling, and glowing card hover states.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day10/task1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day10/task2/index.html" class="task-card" data-category="css" data-tags="css day10 keyframes animation pulse rotate">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 10</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Keyframe Animations: Task 2</h3>
+                <p class="card-desc">Dynamic CSS @keyframes animation sequences (spinners, floating elements, pulses).</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day10/task2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Day10/task4/index.html" class="task-card" data-category="css" data-tags="css day10 media queries responsive mobile">
+                <div class="card-top">
+                    <span class="card-day">CSS • Day 10</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Responsive Media Queries: Task 4</h3>
+                <p class="card-desc">Device breakpoints adapting layouts smoothly for Mobile, Tablet, and Desktop screens.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Day10/task4/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- CSS Tests -->
+            <a href="css/Test/task1/index.html" class="task-card" data-category="test" data-tags="css test assessment task1">
+                <div class="card-top">
+                    <span class="card-day">CSS • Practical Test</span>
+                    <span class="card-tag tag-proj">Test 1</span>
+                </div>
+                <h3 class="card-title">CSS Assessment: Task 1</h3>
+                <p class="card-desc">Practical evaluation test assessing core selectors and box model implementation.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Test/task1/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Test/task2/index.html" class="task-card" data-category="test" data-tags="css test assessment task2">
+                <div class="card-top">
+                    <span class="card-day">CSS • Practical Test</span>
+                    <span class="card-tag tag-proj">Test 2</span>
+                </div>
+                <h3 class="card-title">CSS Assessment: Task 2</h3>
+                <p class="card-desc">Practical evaluation test assessing navigation menus and typography styling.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Test/task2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Test/task3/index.html" class="task-card" data-category="test" data-tags="css test assessment task3">
+                <div class="card-top">
+                    <span class="card-day">CSS • Practical Test</span>
+                    <span class="card-tag tag-proj">Test 3</span>
+                </div>
+                <h3 class="card-title">CSS Assessment: Task 3</h3>
+                <p class="card-desc">Practical evaluation test assessing Flexbox centering and multi-column alignment.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Test/task3/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Test/task4/index.html" class="task-card" data-category="test" data-tags="css test assessment task4">
+                <div class="card-top">
+                    <span class="card-day">CSS • Practical Test</span>
+                    <span class="card-tag tag-proj">Test 4</span>
+                </div>
+                <h3 class="card-title">CSS Assessment: Task 4</h3>
+                <p class="card-desc">Practical evaluation test assessing positioning, absolute overlays, and badges.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Test/task4/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="css/Test/task5/index.html" class="task-card" data-category="test" data-tags="css test assessment task5">
+                <div class="card-top">
+                    <span class="card-day">CSS • Practical Test</span>
+                    <span class="card-tag tag-proj">Test 5</span>
+                </div>
+                <h3 class="card-title">CSS Assessment: Task 5</h3>
+                <p class="card-desc">Comprehensive test project building a fully responsive multi-section landing page.</p>
+                <div class="card-footer">
+                    <span class="card-path">css/Test/task5/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- ===================== BOOTSTRAP TASKS ===================== -->
+
+            <a href="bs/Day2/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 grid container row col">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 2</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Grid & Containers</h3>
+                <p class="card-desc">Container fluid, rows, columns, and 12-column responsive layout breakpoints.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="bs/Day2practie/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 practice components buttons badges">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 2</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Core Components</h3>
+                <p class="card-desc">Button variations, badges, alerts, progress bars, and typography classes.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day2practie/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="bs/Day2practie/practice/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 deep practice layout">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 2</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Extended Practice</h3>
+                <p class="card-desc">Detailed hands-on exercises creating responsive hero sections and action cards.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day2practie/practice/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="bs/Day3/index.html" class="task-card" data-category="bs" data-tags="bootstrap day3 cards navbar carousel modal">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 3</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Navbar & Carousel Components</h3>
+                <p class="card-desc">Responsive collapsible navbar, image slider carousel, and rich card components.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day3/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="bs/Day4/task1.html" class="task-card" data-category="bs" data-tags="bootstrap day4 modal dialog accordion task1">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 4</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Modals & Collapse: Task 1</h3>
+                <p class="card-desc">Interactive popup modals, collapse toggles, and animated accordion FAQs.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day4/task1.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="bs/Day4/task3.html" class="task-card" data-category="bs" data-tags="bootstrap day4 forms input-group task3">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 4</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Forms: Task 3</h3>
+                <p class="card-desc">Styled form controls, input groups, floating labels, and form validation classes.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day4/task3.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="bs/Day4/task4.html" class="task-card" data-category="bs" data-tags="bootstrap day4 utilities flex spacing task4">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 4</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Utilities: Task 4</h3>
+                <p class="card-desc">Comprehensive utility classes for spacing (m, p), borders, shadows, and colors.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day4/task4.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- ===================== PROJECTS & CLASSWORK ===================== -->
+
+            <a href="school/index.html" class="task-card" data-category="project" data-tags="school project multipage website home campus">
+                <div class="card-top">
+                    <span class="card-day">School Project</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Home Portal</h3>
+                <p class="card-desc">Official institution homepage with banner, announcements, principal message, and navigation.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="school/about.html" class="task-card" data-category="project" data-tags="school project about us history vision mission">
+                <div class="card-top">
+                    <span class="card-day">School Project</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: About Us</h3>
+                <p class="card-desc">School history, core values, mission statement, and administrative leadership.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/about.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="school/academics.html" class="task-card" data-category="project" data-tags="school project academics curriculum courses">
+                <div class="card-top">
+                    <span class="card-day">School Project</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Academics</h3>
+                <p class="card-desc">Educational curriculum, subject syllabus, academic calendar, and exam policies.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/academics.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="school/facilities.html" class="task-card" data-category="project" data-tags="school project facilities lab library sports">
+                <div class="card-top">
+                    <span class="card-day">School Project</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Facilities</h3>
+                <p class="card-desc">Campus facilities showcase including science labs, sports arena, library, and cafeteria.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/facilities.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="school/gallery.html" class="task-card" data-category="project" data-tags="school project photo gallery events campus">
+                <div class="card-top">
+                    <span class="card-day">School Project</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Photo Gallery</h3>
+                <p class="card-desc">Memories, cultural fest photos, annual sports meet, and campus architecture gallery.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/gallery.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="school/contact.html" class="task-card" data-category="project" data-tags="school project contact inquiry admission location">
+                <div class="card-top">
+                    <span class="card-day">School Project</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Contact Us</h3>
+                <p class="card-desc">Admission helpdesk, campus address, telephone directory, and location map.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/contact.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <a href="classwork/cssday2/index.html" class="task-card" data-category="css" data-tags="classwork css day2 live practice">
+                <div class="card-top">
+                    <span class="card-day">Classwork</span>
+                    <span class="card-tag tag-css">CSS3</span>
+                </div>
+                <h3 class="card-title">Classwork: CSS Day 2 Practice</h3>
+                <p class="card-desc">Live classwork lab exercises focusing on CSS styling patterns and layout techniques.</p>
+                <div class="card-footer">
+                    <span class="card-path">classwork/cssday2/index.html</span>
+                    <span class="card-action">Open &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Empty Search State -->
+            <div id="noResults" class="no-results">
+                <h3>No matching tasks found</h3>
+                <p>Try searching for a different keyword such as "Day 5", "Form", "Flexbox", "Bootstrap", etc.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; Frontend Development Learning Repository • All Tasks Connected & Verified</p>
+        </footer>
+    </div>
+
+    <!-- Interactive Filtering & Search Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('taskSearch');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.task-card');
+            const noResults = document.getElementById('noResults');
+
+            // Update Counts Dynamically
+            const allCount = cards.length;
+            const htmlCount = document.querySelectorAll('.task-card[data-category="html"]').length;
+            const cssCount = document.querySelectorAll('.task-card[data-category="css"]').length;
+            const bsCount = document.querySelectorAll('.task-card[data-category="bs"]').length;
+            const projCount = document.querySelectorAll('.task-card[data-category="project"]').length;
+            const testCount = document.querySelectorAll('.task-card[data-category="test"]').length;
+
+            document.getElementById('totalTasksCount').textContent = allCount;
+            document.getElementById('allCount').textContent = allCount;
+            document.getElementById('htmlCount').textContent = htmlCount;
+            document.getElementById('cssCount').textContent = cssCount;
+            document.getElementById('bsCount').textContent = bsCount;
+            document.getElementById('projCount').textContent = projCount;
+            document.getElementById('testCount').textContent = testCount;
+
+            let currentCategory = 'all';
+
+            function filterTasks() {
+                const query = searchInput.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const tags = (card.getAttribute('data-tags') || '').toLowerCase();
+                    const title = (card.querySelector('.card-title')?.textContent || '').toLowerCase();
+                    const desc = (card.querySelector('.card-desc')?.textContent || '').toLowerCase();
+                    const path = (card.querySelector('.card-path')?.textContent || '').toLowerCase();
+                    const day = (card.querySelector('.card-day')?.textContent || '').toLowerCase();
+
+                    const matchesCategory = (currentCategory === 'all') || (category === currentCategory);
+                    const matchesQuery = !query || 
+                        title.includes(query) || 
+                        desc.includes(query) || 
+                        tags.includes(query) || 
+                        path.includes(query) || 
+                        day.includes(query);
+
+                    if (matchesCategory && matchesQuery) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+
+            // Filter button clicks
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.getAttribute('data-filter');
+                    filterTasks();
+                });
+            });
+
+            // Search input typing
+            searchInput.addEventListener('input', filterTasks);
+        });
+    </script>
+</body>
+</html>
