@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Master - Interactive JavaScript Learning Portal</title>
+    <link rel="shortcut icon" href="assets/images/studentlearning.jpg" type="image/jpeg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Sticky Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <button class="btn-icon mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="#intro-js" class="brand-logo">
+                    <div class="brand-icon-box">JS</div>
+                    <span>JS Master</span>
+                    <span class="brand-badge">Interactive Portal</span>
+                </a>
+            </div>
+
+            <!-- Global Search with Real-time Dropdown -->
+            <div class="header-search">
+                <div class="search-input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="global-search-input" class="search-input" placeholder="Search topics, syntax, scopes..." autocomplete="off">
+                </div>
+                <div class="search-dropdown" id="search-results-dropdown"></div>
+            </div>
+
+            <!-- Header Right Controls -->
+            <div class="header-right">
+                <div class="header-progress-box" title="Overall Learning Progress">
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="global-progress-bar"></div>
+                    </div>
+                    <span class="progress-label" id="progress-percent-text">0%</span>
+                </div>
+
+                <button class="btn btn-sm btn-outline" id="btn-open-cheatsheet" title="Quick JS Cheat Sheet">
+                    <i class="fa-solid fa-bolt"></i> Cheat Sheet
+                </button>
+
+                <button class="btn-icon" id="theme-toggle" title="Toggle Light/Dark Theme" aria-label="Toggle theme">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Layout with Sidebar and Content -->
+        <div class="main-wrapper">
+            <!-- Sidebar Overlay for Mobile -->
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+            <!-- Left Navigation Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <span class="sidebar-title">Core Curriculum</span>
+                    <span class="sidebar-stats" id="progress-count-text">0 of 8 topics</span>
+                </div>
+                <ul class="sidebar-nav-list" id="sidebar-nav-list">
+                    <!-- Loaded dynamically by app.js -->
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content-area">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumb-bar">
+                    <a href="#intro-js"><i class="fa-solid fa-house"></i> Home</a>
+                    <i class="fa-solid fa-chevron-right breadcrumb-separator"></i>
+                    <span id="breadcrumb-topic">1. Introduction to JavaScript</span>
+                </nav>
+
+                <!-- Hero Section for Active Topic -->
+                <section class="topic-hero">
+                    <div class="topic-hero-meta">
+                        <span class="badge badge-warning" id="topic-hero-category">Foundations</span>
+                        <span class="badge badge-info" id="topic-hero-difficulty">Beginner</span>
+                        <span class="topic-hero-time" id="topic-hero-time"><i class="fa-regular fa-clock"></i> 8 min</span>
+                    </div>
+                    <h1 class="topic-hero-title" id="topic-hero-title">1. Introduction to JavaScript</h1>
+                    <p class="topic-hero-summary" id="topic-hero-summary">
+                        Discover the origin, evolution, architecture, and core execution model of JavaScript.
+                    </p>
+                </section>
+
+                <!-- Dynamic Lesson Sections -->
+                <div class="topic-sections" id="topic-sections">
+                    <!-- Populated dynamically by app.js -->
+                </div>
+
+                <!-- Interactive Visualizer Section -->
+                <section class="visualizer-section">
+                    <div id="visualizer-container">
+                        <!-- Dynamic visualizers rendered by visualizers.js -->
+                    </div>
+                </section>
+
+                <!-- Live Code Playground -->
+                <section class="playground-section">
+                    <div class="playground-container">
+                        <div class="playground-header">
+                            <div class="playground-title">
+                                <i class="fa-solid fa-terminal" style="color:var(--js-yellow);"></i>
+                                <span>Interactive Code Playground</span>
+                            </div>
+                            <div class="playground-actions">
+                                <button class="btn btn-sm btn-outline" id="btn-copy-code" title="Copy code snippet">
+                                    <i class="fa-regular fa-copy"></i> Copy
+                                </button>
+                                <button class="btn btn-sm btn-outline" id="btn-reset-code" title="Reset to original code">
+                                    <i class="fa-solid fa-rotate-left"></i> Reset
+                                </button>
+                                <button class="btn btn-sm btn-outline" id="btn-clear-console" title="Clear console output">
+                                    <i class="fa-solid fa-trash-can"></i> Clear
+                                </button>
+                                <button class="btn btn-sm btn-primary" id="btn-run-code" title="Execute Code">
+                                    <i class="fa-solid fa-play"></i> Run Code
+                                </button>
+                            </div>
+                        </div>
+                        <div class="playground-grid">
+                            <div class="editor-pane">
+                                <div class="pane-label">
+                                    <span><i class="fa-solid fa-code"></i> JavaScript Editor (Editable)</span>
+                                </div>
+                                <textarea id="code-editor" class="code-textarea" spellcheck="false" placeholder="// Type JavaScript code here and click Run Code..."></textarea>
+                            </div>
+                            <div class="console-pane">
+                                <div class="pane-label">
+                                    <span><i class="fa-solid fa-square-poll-vertical"></i> Output Console</span>
+                                </div>
+                                <div id="console-output" class="console-output-box">
+                                    <div class="console-row empty-row"><em>Click "Run Code" to execute...</em></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactive Quiz Knowledge Check -->
+                <section class="quiz-section">
+                    <div class="quiz-header">
+                        <h3><i class="fa-solid fa-circle-question" style="color:var(--js-yellow);"></i> Knowledge Check & Quiz</h3>
+                        <span class="badge badge-info">Test Your Understanding</span>
+                    </div>
+
+                    <div id="quiz-container" class="quiz-container">
+                        <!-- Populated dynamically by app.js -->
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn btn-primary" id="btn-submit-quiz">
+                            <i class="fa-solid fa-check-double"></i> Submit Quiz Answers
+                        </button>
+                    </div>
+
+                    <div id="quiz-results"></div>
+                </section>
+
+                <!-- Bottom Topic Navigation & Progress Trigger -->
+                <nav class="topic-bottom-nav">
+                    <button class="btn btn-outline" id="btn-prev-topic" style="display:none;">
+                        <i class="fa-solid fa-arrow-left"></i> Previous Topic
+                    </button>
+
+                    <button class="btn btn-outline" id="btn-toggle-complete">
+                        <i class="fa-regular fa-circle-check"></i> Mark as Completed
+                    </button>
+
+                    <button class="btn btn-outline" id="btn-next-topic">
+                        Next Topic <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </nav>
+            </main>
+        </div>
+
+        <!-- Cheat Sheet Modal Popup -->
+        <div class="modal-overlay" id="cheatsheet-modal">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h3><i class="fa-solid fa-bolt" style="color:var(--js-yellow);"></i> JavaScript Quick Reference Cheat Sheet</h3>
+                    <button class="btn-icon" id="btn-close-cheatsheet" aria-label="Close modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="cheatsheet-grid" id="cheatsheet-content">
+                        <!-- Populated by app.js -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Feedback Notification -->
+        <div id="app-toast" class="toast-popup"></div>
+
+        <!-- Portal Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div>
+                    <strong>JS Master</strong> &copy; 2026 — Interactive JavaScript Learning Portal.
+                </div>
+                <div>
+                    Covering Intro, Variables, Scopes, Hoisting, Arrow Functions, Syntactic Sugar & more.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts (Ordered by dependency) -->
+    <script src="assets/js/topics-data.js"></script>
+    <script src="assets/js/runner.js"></script>
+    <script src="assets/js/visualizers.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

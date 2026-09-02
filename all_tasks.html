@@ -3,32 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Development - All Tasks & Projects</title>
+    <title>Frontend Development - All Tasks & Projects Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --surface-color: #1e293b;
-            --surface-hover: #334155;
-            --border-color: #334155;
+            --bg-color: #0b0f19;
+            --surface-color: #131b2e;
+            --surface-card: #182238;
+            --surface-hover: #1e2d4a;
+            --border-color: #243452;
+            --border-glow: rgba(56, 189, 248, 0.25);
             --primary: #38bdf8;
-            --primary-glow: rgba(56, 189, 248, 0.15);
+            --primary-glow: rgba(56, 189, 248, 0.2);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --badge-html-bg: #ea580c;
-            --badge-html-txt: #ffedd5;
-            --badge-css-bg: #0284c7;
-            --badge-css-txt: #e0f2fe;
-            --badge-bs-bg: #7c3aed;
-            --badge-bs-txt: #ede9fe;
-            --badge-proj-bg: #059669;
-            --badge-proj-txt: #d1fae5;
-            --radius-md: 12px;
-            --radius-lg: 18px;
-            --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --text-dim: #64748b;
+            
+            /* Category Accent Colors */
+            --color-html: #f97316;
+            --color-html-bg: rgba(249, 115, 22, 0.12);
+            --color-html-border: rgba(249, 115, 22, 0.3);
+            
+            --color-css: #0ea5e9;
+            --color-css-bg: rgba(14, 165, 233, 0.12);
+            --color-css-border: rgba(14, 165, 233, 0.3);
+            
+            --color-bs: #a855f7;
+            --color-bs-bg: rgba(168, 85, 247, 0.12);
+            --color-bs-border: rgba(168, 85, 247, 0.3);
+            
+            --color-js: #facc15;
+            --color-js-bg: rgba(250, 204, 21, 0.12);
+            --color-js-border: rgba(250, 204, 21, 0.3);
+            
+            --color-proj: #10b981;
+            --color-proj-bg: rgba(16, 185, 129, 0.12);
+            --color-proj-border: rgba(16, 185, 129, 0.3);
+            
+            --color-test: #f43f5e;
+            --color-test-bg: rgba(244, 63, 94, 0.12);
+            --color-test-border: rgba(244, 63, 94, 0.3);
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+            --shadow-hover: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
+            --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -40,108 +63,150 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+                radial-gradient(at 85% 85%, rgba(168, 85, 247, 0.06) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(250, 204, 21, 0.04) 0px, transparent 60%);
+            background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
-            padding: 2.5rem 1.5rem;
+            padding: 3rem 1.5rem 5rem;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1350px;
+            max-width: 1440px;
             margin: 0 auto;
         }
 
         /* Header */
         header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.75rem;
+            position: relative;
         }
 
         .badge-header {
-            display: inline-block;
-            background: rgba(56, 189, 248, 0.12);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 189, 248, 0.1);
             color: var(--primary);
             border: 1px solid rgba(56, 189, 248, 0.25);
-            padding: 0.35rem 1rem;
+            padding: 0.4rem 1.1rem;
             border-radius: 999px;
             font-size: 0.825rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            margin-bottom: 0.9rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #38bdf8;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #38bdf8;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
         }
 
         h1 {
-            font-size: 2.75rem;
+            font-size: 3rem;
             font-weight: 800;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 60%, #818cf8 100%);
+            letter-spacing: -0.035em;
+            background: linear-gradient(135deg, #ffffff 15%, #38bdf8 55%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
         }
 
         .subtitle {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 650px;
+            font-size: 1.1rem;
+            max-width: 720px;
             margin: 0 auto;
+            font-weight: 400;
         }
 
-        /* Stats Bar */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.25rem;
         }
 
         .stat-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1.25rem;
+            padding: 1.25rem 1rem;
             text-align: center;
             box-shadow: var(--shadow-card);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .stat-card:hover {
             transform: translateY(-3px);
             border-color: var(--primary);
+            box-shadow: 0 8px 24px -4px rgba(56, 189, 248, 0.18);
         }
 
         .stat-num {
-            font-size: 1.85rem;
+            font-size: 2rem;
             font-weight: 800;
-            color: var(--primary);
             display: block;
+            margin-bottom: 0.25rem;
+            line-height: 1.1;
         }
+
+        .stat-card.stat-all .stat-num { color: #ffffff; }
+        .stat-card.stat-html .stat-num { color: var(--color-html); }
+        .stat-card.stat-css .stat-num { color: var(--color-css); }
+        .stat-card.stat-bs .stat-num { color: var(--color-bs); }
+        .stat-card.stat-js .stat-num { color: var(--color-js); }
+        .stat-card.stat-proj .stat-num { color: var(--color-proj); }
+        .stat-card.stat-test .stat-num { color: var(--color-test); }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.825rem;
             color: var(--text-muted);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
-        /* Search and Filter Controls */
+        /* Controls Section */
         .controls-wrapper {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 1.25rem 1.5rem;
+            padding: 1.5rem;
             margin-bottom: 2.5rem;
             box-shadow: var(--shadow-card);
+            backdrop-filter: blur(12px);
         }
 
         .search-box {
             position: relative;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.25rem;
         }
 
-        .search-box svg {
+        .search-icon {
             position: absolute;
-            left: 1rem;
+            left: 1.15rem;
             top: 50%;
             transform: translateY(-50%);
             width: 20px;
@@ -150,10 +215,25 @@
             pointer-events: none;
         }
 
+        .search-shortcut {
+            position: absolute;
+            right: 1.15rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: 'Fira Code', monospace;
+            color: var(--text-dim);
+            pointer-events: none;
+        }
+
         .search-input {
             width: 100%;
-            padding: 0.85rem 1rem 0.85rem 3rem;
-            background: rgba(15, 23, 42, 0.7);
+            padding: 0.95rem 4rem 0.95rem 3.25rem;
+            background: rgba(11, 15, 25, 0.7);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             color: var(--text-main);
@@ -166,53 +246,76 @@
         .search-input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px var(--primary-glow);
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(11, 15, 25, 0.95);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-dim);
         }
 
         .filters {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.55rem;
             align-items: center;
         }
 
         .filter-btn {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(11, 15, 25, 0.6);
             border: 1px solid var(--border-color);
             color: var(--text-muted);
-            padding: 0.5rem 1rem;
+            padding: 0.55rem 1.1rem;
             border-radius: 999px;
             font-size: 0.85rem;
             font-weight: 600;
             font-family: inherit;
             cursor: pointer;
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            user-select: none;
         }
 
         .filter-btn:hover {
             color: var(--text-main);
-            border-color: var(--primary);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .filter-btn.active {
             background: var(--primary);
-            color: #0f172a;
+            color: #0b0f19;
             border-color: var(--primary);
+            font-weight: 700;
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+        }
+
+        .filter-count {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
             font-weight: 700;
         }
 
-        /* Task Cards Grid */
+        .filter-btn.active .filter-count {
+            background: rgba(0, 0, 0, 0.15);
+            color: #0b0f19;
+        }
+
+        /* Tasks Grid */
         .task-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+            gap: 1.35rem;
         }
 
         .task-card {
-            background: var(--surface-color);
+            background: var(--surface-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1.25rem;
+            padding: 1.35rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -225,9 +328,10 @@
         }
 
         .task-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45);
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: var(--shadow-hover);
+            background: var(--surface-hover);
         }
 
         .task-card::before {
@@ -236,76 +340,111 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 3.5px;
             background: transparent;
             transition: var(--transition);
         }
 
-        .task-card[data-category="html"]::before { background: var(--badge-html-bg); }
-        .task-card[data-category="css"]::before { background: var(--badge-css-bg); }
-        .task-card[data-category="bs"]::before { background: var(--badge-bs-bg); }
-        .task-card[data-category="project"]::before { background: var(--badge-proj-bg); }
-        .task-card[data-category="test"]::before { background: #eab308; }
+        .task-card[data-category="html"]::before { background: var(--color-html); }
+        .task-card[data-category="css"]::before { background: var(--color-css); }
+        .task-card[data-category="bs"]::before { background: var(--color-bs); }
+        .task-card[data-category="js"]::before { background: var(--color-js); }
+        .task-card[data-category="project"]::before { background: var(--color-proj); }
+        .task-card[data-category="test"]::before { background: var(--color-test); }
 
         .card-top {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
+            align-items: center;
+            margin-bottom: 0.85rem;
         }
 
         .card-day {
-            font-size: 0.75rem;
+            font-size: 0.775rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            color: var(--text-dim);
         }
 
         .card-tag {
             font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            padding: 0.22rem 0.6rem;
+            border-radius: 6px;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
-        .tag-html { background: rgba(234, 88, 12, 0.15); color: #fb923c; border: 1px solid rgba(234, 88, 12, 0.3); }
-        .tag-css { background: rgba(2, 132, 199, 0.15); color: #38bdf8; border: 1px solid rgba(2, 132, 199, 0.3); }
-        .tag-bs { background: rgba(124, 58, 237, 0.15); color: #c084fc; border: 1px solid rgba(124, 58, 237, 0.3); }
-        .tag-proj { background: rgba(5, 150, 105, 0.15); color: #34d399; border: 1px solid rgba(5, 150, 105, 0.3); }
+        .tag-html { background: var(--color-html-bg); color: #fb923c; border: 1px solid var(--color-html-border); }
+        .tag-css { background: var(--color-css-bg); color: #38bdf8; border: 1px solid var(--color-css-border); }
+        .tag-bs { background: var(--color-bs-bg); color: #c084fc; border: 1px solid var(--color-bs-border); }
+        .tag-js { background: var(--color-js-bg); color: #fde047; border: 1px solid var(--color-js-border); }
+        .tag-proj { background: var(--color-proj-bg); color: #34d399; border: 1px solid var(--color-proj-border); }
+        .tag-test { background: var(--color-test-bg); color: #fb7185; border: 1px solid var(--color-test-border); }
 
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
             line-height: 1.35;
         }
 
         .card-desc {
-            font-size: 0.85rem;
+            font-size: 0.875rem;
             color: var(--text-muted);
             margin-bottom: 1.25rem;
             flex-grow: 1;
+            line-height: 1.55;
         }
 
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            gap: 0.5rem;
         }
 
         .card-path {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-family: monospace;
-            max-width: 190px;
+            font-size: 0.725rem;
+            color: var(--text-dim);
+            font-family: 'Fira Code', monospace;
+            max-width: 200px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .card-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-copy-path {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .btn-copy-path:hover {
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
         }
 
         .card-action {
@@ -320,13 +459,14 @@
 
         .task-card:hover .card-action {
             transform: translateX(3px);
+            color: #ffffff;
         }
 
         /* Empty State */
         .no-results {
             display: none;
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 4.5rem 1.5rem;
             background: var(--surface-color);
             border: 1px dashed var(--border-color);
             border-radius: var(--radius-lg);
@@ -334,25 +474,117 @@
             grid-column: 1 / -1;
         }
 
+        .no-results h3 {
+            font-size: 1.35rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
         .no-results p {
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-reset-search {
+            background: var(--primary);
+            color: #0b0f19;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-reset-search:hover {
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            transform: scale(1.03);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid var(--primary);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Back to top button */
+        .btn-back-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--surface-card);
+            border: 1px solid var(--border-color);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-card);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: var(--transition);
+            z-index: 900;
+        }
+
+        .btn-back-top.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .btn-back-top:hover {
+            border-color: var(--primary);
+            background: var(--surface-hover);
+            transform: scale(1.1);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            margin-top: 4rem;
+            margin-top: 4.5rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
+            color: var(--text-dim);
             font-size: 0.9rem;
         }
 
+        footer strong {
+            color: var(--text-muted);
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
+            h1 { font-size: 2.15rem; }
+            .subtitle { font-size: 0.95rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .task-grid { grid-template-columns: 1fr; }
+            .controls-wrapper { padding: 1.15rem; }
+            .card-path { max-width: 140px; }
         }
     </style>
 </head>
@@ -360,60 +592,408 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <span class="badge-header">Interactive Learning Hub</span>
+            <div class="badge-header">
+                <span class="badge-pulse"></span>
+                <span>Complete Frontend Repository</span>
+            </div>
             <h1>Frontend Mastery Task Portal</h1>
-            <p class="subtitle">Complete collection of hands-on frontend exercises, projects, and component designs covering HTML5, CSS3, Bootstrap 5, and multi-page web applications.</p>
+            <p class="subtitle">Curated directory of all HTML5, CSS3, Bootstrap 5, JavaScript (ES6+), real-world multi-page web applications, and practical assessments.</p>
         </header>
 
         <!-- Stats Grid -->
         <div class="stats-grid">
-            <div class="stat-card">
+            <div class="stat-card stat-all">
                 <span class="stat-num" id="totalTasksCount">0</span>
-                <span class="stat-label">Total Tasks</span>
+                <span class="stat-label">Total Modules</span>
             </div>
-            <div class="stat-card">
-                <span class="stat-num">31</span>
+            <div class="stat-card stat-html">
+                <span class="stat-num" id="statHtmlCount">32</span>
                 <span class="stat-label">HTML5 Modules</span>
             </div>
-            <div class="stat-card">
-                <span class="stat-num">28</span>
+            <div class="stat-card stat-css">
+                <span class="stat-num" id="statCssCount">28</span>
                 <span class="stat-label">CSS3 Modules</span>
             </div>
-            <div class="stat-card">
-                <span class="stat-num">7</span>
-                <span class="stat-label">Bootstrap Modules</span>
+            <div class="stat-card stat-bs">
+                <span class="stat-num" id="statBsCount">7</span>
+                <span class="stat-label">Bootstrap 5</span>
             </div>
-            <div class="stat-card">
-                <span class="stat-num">7</span>
+            <div class="stat-card stat-js">
+                <span class="stat-num" id="statJsCount">19</span>
+                <span class="stat-label">JavaScript ES6+</span>
+            </div>
+            <div class="stat-card stat-proj">
+                <span class="stat-num" id="statProjCount">8</span>
                 <span class="stat-label">Full Projects</span>
+            </div>
+            <div class="stat-card stat-test">
+                <span class="stat-num" id="statTestCount">7</span>
+                <span class="stat-label">Tests & Evals</span>
             </div>
         </div>
 
         <!-- Controls: Search & Category Filters -->
         <div class="controls-wrapper">
             <div class="search-box">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
-                <input type="text" id="taskSearch" class="search-input" placeholder="Search tasks by name, topic (e.g. form, table, flexbox, day 5, video, navbar)...">
+                <input type="text" id="taskSearch" class="search-input" placeholder="Search tasks by title, topic (e.g. loops, flexbox, form, closures, grid, modal, day 4)...">
+                <span class="search-shortcut">/</span>
             </div>
             <div class="filters">
-                <button class="filter-btn active" data-filter="all">All Tasks (<span id="allCount">0</span>)</button>
-                <button class="filter-btn" data-filter="html">HTML5 (<span id="htmlCount">0</span>)</button>
-                <button class="filter-btn" data-filter="css">CSS3 (<span id="cssCount">0</span>)</button>
-                <button class="filter-btn" data-filter="bs">Bootstrap (<span id="bsCount">0</span>)</button>
-                <button class="filter-btn" data-filter="project">Projects & School (<span id="projCount">0</span>)</button>
-                <button class="filter-btn" data-filter="test">Tests & Assignments (<span id="testCount">0</span>)</button>
+                <button class="filter-btn active" data-filter="all">All Tasks <span class="filter-count" id="allCount">0</span></button>
+                <button class="filter-btn" data-filter="html">HTML5 <span class="filter-count" id="htmlCount">0</span></button>
+                <button class="filter-btn" data-filter="css">CSS3 <span class="filter-count" id="cssCount">0</span></button>
+                <button class="filter-btn" data-filter="bs">Bootstrap 5 <span class="filter-count" id="bsCount">0</span></button>
+                <button class="filter-btn" data-filter="js">JavaScript <span class="filter-count" id="jsCount">0</span></button>
+                <button class="filter-btn" data-filter="project">Projects & School <span class="filter-count" id="projCount">0</span></button>
+                <button class="filter-btn" data-filter="test">Tests & Practice <span class="filter-count" id="testCount">0</span></button>
             </div>
         </div>
 
         <!-- Task Grid Container -->
         <div class="task-grid" id="taskList">
 
+            <!-- ===================== JAVASCRIPT TASKS ===================== -->
+
+            <!-- JS Day 10 Master Project -->
+            <a href="javascrpit/Day10/project/website/index.html" class="task-card" data-category="project" data-tags="javascript js day10 master project portal interactive visualizer runner playground dark mode">
+                <div class="card-top">
+                    <span class="card-day">JS • Master Project</span>
+                    <span class="card-tag tag-proj">Featured App</span>
+                </div>
+                <h3 class="card-title">JS Master Interactive Learning Portal</h3>
+                <p class="card-desc">Full-featured web application with interactive code runners, visual execution memory trees, syntax playground, dark theme, and real-time progress tracker.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day10/project/website/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day10/project/website/index.html">&#128203;</button>
+                        <span class="card-action">Launch &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 2 -->
+            <a href="javascrpit/Day2/Task1/index.html" class="task-card" data-category="js" data-tags="javascript js day2 variables var initialization student console">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 2</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">JS Variables & Initialization (Task 1)</h3>
+                <p class="card-desc">Foundational variable declarations using var, student data profiling, fees, status, and console outputs.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day2/Task1/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day2/Task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day2/Task2/index.html" class="task-card" data-category="js" data-tags="javascript js day2 data types typeof string number boolean null float">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 2</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">JS Data Types & Typeof (Task 2)</h3>
+                <p class="card-desc">Exploring dynamic primitives: String, Integer, Float, Boolean, and Null types using the typeof operator.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day2/Task2/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day2/Task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day2/Task3/index.html" class="task-card" data-category="js" data-tags="javascript js day2 let variable reassignment mutation">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 2</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Variable Reassignment with Let (Task 3)</h3>
+                <p class="card-desc">Demonstrating mutable variables with let keyword, value reassignments, and console logs.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day2/Task3/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day2/Task3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day2/Task4/index.html" class="task-card" data-category="js" data-tags="javascript js day2 const constants immutability">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 2</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Constants & Immutability (Task 4)</h3>
+                <p class="card-desc">Understanding const behavior, read-only bindings, and immutability error handling.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day2/Task4/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day2/Task4/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 3 -->
+            <a href="javascrpit/Day3/index.html" class="task-card" data-category="js" data-tags="javascript js day3 operators arithmetic assignment comparison logical increment decrement">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 3</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Operators Suite (Tasks 1-5)</h3>
+                <p class="card-desc">Comprehensive suite covering Arithmetic (+, -, *, /, %), Assignment (+=, -=, *=, /=), Comparison, Logical (&&, ||, !), and ++ / -- operators.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day3/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 4 -->
+            <a href="javascrpit/Day4/Task1/index.html" class="task-card" data-category="js" data-tags="javascript js day4 conditionals if else voting eligibility">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 4</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Conditionals: Voting Eligibility (Task 1)</h3>
+                <p class="card-desc">Basic if-else branching to verify voter age eligibility with console evaluations.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day4/Task1/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day4/Task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day4/Task2/index.html" class="task-card" data-category="js" data-tags="javascript js day4 modulus even odd math">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 4</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Even / Odd Number Checker (Task 2)</h3>
+                <p class="card-desc">Using modulus operator (%) and conditional branching to determine number parity.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day4/Task2/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day4/Task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day4/Task3/index.html" class="task-card" data-category="js" data-tags="javascript js day4 grade marks ladder if else if">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 4</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Grading System Ladder (Task 3)</h3>
+                <p class="card-desc">Multi-tier conditional ladder (A+, A, B, C, Fail) evaluating score ranges with logical AND.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day4/Task3/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day4/Task3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day4/Task4/index.html" class="task-card" data-category="js" data-tags="javascript js day4 authentication login credentials validation">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 4</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Login Credentials Validator (Task 4)</h3>
+                <p class="card-desc">User authentication logic combining username and password verification with strict equality.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day4/Task4/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day4/Task4/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 5 -->
+            <a href="javascrpit/Day5/simpletask/index.html" class="task-card" data-category="js" data-tags="javascript js day5 loops for loop multiplication tables countdown evens">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 5</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Loop Iterations & Tables</h3>
+                <p class="card-desc">For loop series (1-10, 10-1, 1-20), even/odd filtering, 5x multiplication table, and reverse countdowns.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day5/simpletask/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day5/simpletask/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 6 -->
+            <a href="javascrpit/Day6/Task/index.html" class="task-card" data-category="js" data-tags="javascript js day6 loops accumulators sum counter series">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 6</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Loop Algorithms & Accumulators</h3>
+                <p class="card-desc">String concatenations in loops, 1-50 evens/odds generator, sum 1-20, even sum 1-50, and even counter 1-100.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day6/Task/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day6/Task/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 7 -->
+            <a href="javascrpit/Day7/practice/index.html" class="task-card" data-category="js" data-tags="javascript js day7 arrays objects data structures indexes">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 7</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Arrays & Objects Foundation</h3>
+                <p class="card-desc">Array creation, index access, array lengths, object literals, key-value mappings, and data access.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day7/practice/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day7/practice/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day7/task/index.html" class="task-card" data-category="js" data-tags="javascript js day7 array iteration object properties student">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 7</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Array Iteration & Student Record</h3>
+                <p class="card-desc">Iterating fruit arrays with for-loops and accessing student profile object fields in console.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day7/task/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day7/task/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 8 -->
+            <a href="javascrpit/Day8/practice/index.html" class="task-card" data-category="js" data-tags="javascript js day8 functions arrow functions anonymous math">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 8</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Functions & Arrow Syntax Practice</h3>
+                <p class="card-desc">Deep practice with Function declarations, ES6 Arrow functions, Anonymous functions, and arithmetic helpers.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day8/practice/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day8/practice/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascrpit/Day8/task/index.html" class="task-card" data-category="js" data-tags="javascript js day8 array loops filtering students even">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 8</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Array Looping & Value Filtering</h3>
+                <p class="card-desc">Iterating number arrays, printing student strings, and filtering even elements through loops.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day8/task/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day8/task/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 9 -->
+            <a href="javascrpit/Day9/task/index.html" class="task-card" data-category="js" data-tags="javascript js day9 return functions factorial scopes global function block">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 9</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Return Functions, Factorials & Scopes</h3>
+                <p class="card-desc">Functions with return values, recursive/loop factorial algorithms, Global scope, Function scope, and Block scope.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day9/task/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day9/task/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 10 -->
+            <a href="javascrpit/Day10/task/index.html" class="task-card" data-category="js" data-tags="javascript js day10 es6 destructuring rest spread hoisting tdz classes default params">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 10</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Modern ES6+ Features Master</h3>
+                <p class="card-desc">Hoisting, TDZ, Array/Object Destructuring, Rest & Spread operators, Default parameters, and ES6 Classes with constructors.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day10/task/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day10/task/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 11 -->
+            <a href="javascrpit/Day11/task/index.html" class="task-card" data-category="js" data-tags="javascript js day11 callbacks closures array methods push pop shift unshift concat">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 11</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Callbacks, Closures & Array Methods</h3>
+                <p class="card-desc">Callback functions, closure counter states, mutating methods (push, pop, shift, unshift), and array concatenation.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day11/task/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day11/task/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Test PDF -->
+            <a href="javascrpit/Test/moni(FS).pdf" class="task-card" data-category="test" data-tags="javascript test full stack pdf evaluation assessment certificate">
+                <div class="card-top">
+                    <span class="card-day">JS • Assessment</span>
+                    <span class="card-tag tag-test">Evaluation PDF</span>
+                </div>
+                <h3 class="card-title">Full Stack JS Evaluation Document</h3>
+                <p class="card-desc">Comprehensive Full Stack assessment report and technical evaluation documentation.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Test/moni(FS).pdf</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Test/moni(FS).pdf">&#128203;</button>
+                        <span class="card-action">View PDF &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+
             <!-- ===================== HTML TASKS ===================== -->
 
             <!-- HTML Day 1 -->
-            <a href="html/Day1/index.html" class="task-card" data-category="html" data-tags="day1 intro basics">
+            <a href="html/Day1/index.html" class="task-card" data-category="html" data-tags="day1 intro basics headings paragraphs html5">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 1</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -422,26 +1002,32 @@
                 <p class="card-desc">Basic HTML document structure, essential heading tags (H1-H6), and paragraph elements.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 2 -->
-            <a href="html/Day2/story.html" class="task-card" data-category="html" data-tags="day2 story text typography">
+            <a href="html/Day2/story.html" class="task-card" data-category="html" data-tags="day2 story text typography bold italics break">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 2</span>
                     <span class="card-tag tag-html">HTML5</span>
                 </div>
-                <h3 class="card-title">Story Page</h3>
+                <h3 class="card-title">Story Page Layout</h3>
                 <p class="card-desc">Narrative story layout with paragraph formatting, bold, italics, and line break tags.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day2/story.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day2/story.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 3 -->
-            <a href="html/Day3/company.html" class="task-card" data-category="html" data-tags="day3 company corporate profile">
+            <a href="html/Day3/company.html" class="task-card" data-category="html" data-tags="day3 company corporate profile mission contact">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 3</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -450,11 +1036,14 @@
                 <p class="card-desc">Structured corporate profile highlighting company services, mission, and contact details.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day3/company.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day3/company.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day3/profile.html" class="task-card" data-category="html" data-tags="day3 personal profile resume bio">
+            <a href="html/Day3/profile.html" class="task-card" data-category="html" data-tags="day3 personal profile resume bio skills education">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 3</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -463,12 +1052,15 @@
                 <p class="card-desc">Personal bio page featuring skills, education, and career aspirations.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day3/profile.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day3/profile.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 4 -->
-            <a href="html/Day4/block.html" class="task-card" data-category="html" data-tags="day4 block elements div section">
+            <a href="html/Day4/block.html" class="task-card" data-category="html" data-tags="day4 block elements div section container">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 4</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -477,11 +1069,14 @@
                 <p class="card-desc">Demonstration of block-level HTML tags and container grouping behavior.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day4/block.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day4/block.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day4/formatting.html" class="task-card" data-category="html" data-tags="day4 formatting mark small del ins sub sup">
+            <a href="html/Day4/formatting.html" class="task-card" data-category="html" data-tags="day4 formatting mark small del ins sub sup strong em">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 4</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -490,11 +1085,14 @@
                 <p class="card-desc">Exploring mark, sub, sup, del, ins, strong, em, and other rich text formatting tags.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day4/formatting.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day4/formatting.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day4/inline.html" class="task-card" data-category="html" data-tags="day4 inline elements span strong em a">
+            <a href="html/Day4/inline.html" class="task-card" data-category="html" data-tags="day4 inline elements span strong em a link">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 4</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -503,11 +1101,14 @@
                 <p class="card-desc">Comprehensive review of inline-level tags, anchor links, and inline text spans.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day4/inline.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day4/inline.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day4/interactive.html" class="task-card" data-category="html" data-tags="day4 interactive details summary dialog">
+            <a href="html/Day4/interactive.html" class="task-card" data-category="html" data-tags="day4 interactive details summary dialog accordion">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 4</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -516,38 +1117,47 @@
                 <p class="card-desc">Native interactive collapsible accordions using details and summary tags.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day4/interactive.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day4/interactive.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 5 -->
-            <a href="html/Day5/task1.html" class="task-card" data-category="html" data-tags="day5 list ol ul task1">
+            <a href="html/Day5/task1.html" class="task-card" data-category="html" data-tags="day5 list ol ul task1 ordered unordered">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 5</span>
                     <span class="card-tag tag-html">HTML5</span>
                 </div>
-                <h3 class="card-title">Lists: Task 1</h3>
+                <h3 class="card-title">Lists: Task 1 (Standard Lists)</h3>
                 <p class="card-desc">Ordered and unordered lists showcasing course subjects and step-by-step guides.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day5/task1.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day5/task1.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day5/task2.html" class="task-card" data-category="html" data-tags="day5 list nested task2">
+            <a href="html/Day5/task2.html" class="task-card" data-category="html" data-tags="day5 list nested task2 hierarchy menu">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 5</span>
                     <span class="card-tag tag-html">HTML5</span>
                 </div>
-                <h3 class="card-title">Lists: Task 2 (Nested)</h3>
+                <h3 class="card-title">Lists: Task 2 (Nested Lists)</h3>
                 <p class="card-desc">Multi-level nested lists representing hierarchical directories and menus.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day5/task2.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day5/task2.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day5/task3.html" class="task-card" data-category="html" data-tags="day5 dl dt dd definition list task3">
+            <a href="html/Day5/task3.html" class="task-card" data-category="html" data-tags="day5 dl dt dd definition list task3 dictionary glossary">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 5</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -556,11 +1166,14 @@
                 <p class="card-desc">Dictionary and glossary representation using definition term and description tags.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day5/task3.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day5/task3.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day5/task4.html" class="task-card" data-category="html" data-tags="day5 mixed lists task4">
+            <a href="html/Day5/task4.html" class="task-card" data-category="html" data-tags="day5 mixed lists task4 combo">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 5</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -569,11 +1182,14 @@
                 <p class="card-desc">Hybrid lists combining ordered, unordered, and descriptive structures.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day5/task4.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day5/task4.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day5/task5.html" class="task-card" data-category="html" data-tags="day5 comprehensive list task5">
+            <a href="html/Day5/task5.html" class="task-card" data-category="html" data-tags="day5 comprehensive list task5 advanced">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 5</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -582,12 +1198,15 @@
                 <p class="card-desc">Deep nesting and styling of complex navigation list components.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day5/task5.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day5/task5.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 6 -->
-            <a href="html/Day6/collegewebsite.html" class="task-card" data-category="html" data-tags="day6 college university website campus">
+            <a href="html/Day6/collegewebsite.html" class="task-card" data-category="html" data-tags="day6 college university website campus portal faculty">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 6</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -596,24 +1215,30 @@
                 <p class="card-desc">College information portal with departments, faculty list, and campus photos.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day6/collegewebsite.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day6/collegewebsite.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day6/imagegallery.html" class="task-card" data-category="html" data-tags="day6 image gallery photos showcase">
+            <a href="html/Day6/imagegallery.html" class="task-card" data-category="html" data-tags="day6 image gallery photos showcase pictures">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 6</span>
                     <span class="card-tag tag-html">HTML5</span>
                 </div>
-                <h3 class="card-title">Image Gallery</h3>
+                <h3 class="card-title">Image Gallery Showcase</h3>
                 <p class="card-desc">Pure HTML photo showcase featuring responsive image dimensions and captions.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day6/imagegallery.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day6/imagegallery.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day6/myfavourite.html" class="task-card" data-category="html" data-tags="day6 favourites hobbies books movies">
+            <a href="html/Day6/myfavourite.html" class="task-card" data-category="html" data-tags="day6 favourites hobbies books movies tourism">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 6</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -622,24 +1247,30 @@
                 <p class="card-desc">Curated catalog of favorite books, movies, sports, and tourist destinations.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day6/myfavourite.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day6/myfavourite.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day6/studentprofile.html" class="task-card" data-category="html" data-tags="day6 student profile card id bio">
+            <a href="html/Day6/studentprofile.html" class="task-card" data-category="html" data-tags="day6 student profile card id bio academic">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 6</span>
                     <span class="card-tag tag-html">HTML5</span>
                 </div>
-                <h3 class="card-title">Student Profile Page</h3>
+                <h3 class="card-title">Student Profile Card</h3>
                 <p class="card-desc">Detailed student bio card with academic details, roll number, and contact info.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day6/studentprofile.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day6/studentprofile.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day6/googlelinkpage.html" class="task-card" data-category="html" data-tags="day6 hyperlinks external links search">
+            <a href="html/Day6/googlelinkpage.html" class="task-card" data-category="html" data-tags="day6 hyperlinks external links search bookmarks">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 6</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -648,11 +1279,14 @@
                 <p class="card-desc">Curated directory of external Google service hyperlinks and research bookmarks.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day6/googlelinkpage.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day6/googlelinkpage.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day6/openlink.html" class="task-card" data-category="html" data-tags="day6 links target blank navigation">
+            <a href="html/Day6/openlink.html" class="task-card" data-category="html" data-tags="day6 links target blank navigation anchor jump">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 6</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -661,39 +1295,48 @@
                 <p class="card-desc">Testing internal anchor links, target attributes, and bookmark jump navigation.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day6/openlink.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day6/openlink.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 7 Multi-Page Projects -->
-            <a href="html/Day7/task1/index.html" class="task-card" data-category="html" data-tags="day7 multipage task1 products ecommerce">
+            <a href="html/Day7/task1/index.html" class="task-card" data-category="project" data-tags="day7 multipage task1 products ecommerce website">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 7</span>
-                    <span class="card-tag tag-html">HTML5</span>
+                    <span class="card-tag tag-proj">Multi-Page</span>
                 </div>
-                <h3 class="card-title">Multi-Page Website: Task 1</h3>
-                <p class="card-desc">Connected multi-page website architecture featuring a home page and products catalog.</p>
+                <h3 class="card-title">Multi-Page Store: Task 1</h3>
+                <p class="card-desc">Connected multi-page website architecture featuring a home landing page and dedicated products catalog.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day7/task1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day7/task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day7/task2/index.html" class="task-card" data-category="html" data-tags="day7 multipage task2 public services">
+            <a href="html/Day7/task2/index.html" class="task-card" data-category="project" data-tags="day7 multipage task2 public services government community">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 7</span>
-                    <span class="card-tag tag-html">HTML5</span>
+                    <span class="card-tag tag-proj">Multi-Page</span>
                 </div>
                 <h3 class="card-title">Public Services Portal: Task 2</h3>
                 <p class="card-desc">Government & community service hub linking Education and Police department pages.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day7/task2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day7/task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 8 Forms -->
-            <a href="html/Day8/contact.html" class="task-card" data-category="html" data-tags="day8 forms contact support">
+            <a href="html/Day8/contact.html" class="task-card" data-category="html" data-tags="day8 forms contact support inquiry">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 8</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -702,11 +1345,14 @@
                 <p class="card-desc">Interactive inquiry form with input fields, message area, and validation attributes.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day8/contact.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day8/contact.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day8/feedback.html" class="task-card" data-category="html" data-tags="day8 forms feedback rating survey">
+            <a href="html/Day8/feedback.html" class="task-card" data-category="html" data-tags="day8 forms feedback rating survey review">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 8</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -715,11 +1361,14 @@
                 <p class="card-desc">Rating sliders, satisfaction radio buttons, and review submission fields.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day8/feedback.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day8/feedback.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day8/jobapplication.html" class="task-card" data-category="html" data-tags="day8 forms job career application resume">
+            <a href="html/Day8/jobapplication.html" class="task-card" data-category="html" data-tags="day8 forms job career application resume upload">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 8</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -728,11 +1377,14 @@
                 <p class="card-desc">Comprehensive job portal form with file uploads, experience fields, and qualifications.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day8/jobapplication.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day8/jobapplication.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day8/login.html" class="task-card" data-category="html" data-tags="day8 forms login auth password">
+            <a href="html/Day8/login.html" class="task-card" data-category="html" data-tags="day8 forms login auth password mask">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 8</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -741,11 +1393,14 @@
                 <p class="card-desc">Clean sign-in interface with email, password masking, and remember me toggle.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day8/login.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day8/login.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day8/regform.html" class="task-card" data-category="html" data-tags="day8 forms registration signup user">
+            <a href="html/Day8/regform.html" class="task-card" data-category="html" data-tags="day8 forms registration signup user dropdown checkbox">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 8</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -754,12 +1409,15 @@
                 <p class="card-desc">Complete account creation form with gender, DOB, dropdown selectors, and terms checkbox.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day8/regform.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day8/regform.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 9 Tables -->
-            <a href="html/Day9/employee.html" class="task-card" data-category="html" data-tags="day9 tables employee salary hr">
+            <a href="html/Day9/employee.html" class="task-card" data-category="html" data-tags="day9 tables employee salary hr payroll">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 9</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -768,11 +1426,14 @@
                 <p class="card-desc">Structured company personnel table with designations, departments, and payroll info.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day9/employee.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day9/employee.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day9/hospital.html" class="task-card" data-category="html" data-tags="day9 tables hospital medical patient">
+            <a href="html/Day9/hospital.html" class="task-card" data-category="html" data-tags="day9 tables hospital medical patient clinic">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 9</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -781,11 +1442,14 @@
                 <p class="card-desc">Healthcare database table for doctor schedules, patient IDs, and ward allocations.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day9/hospital.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day9/hospital.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day9/product.html" class="task-card" data-category="html" data-tags="day9 tables product pricing ecommerce">
+            <a href="html/Day9/product.html" class="task-card" data-category="html" data-tags="day9 tables product pricing ecommerce inventory">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 9</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -794,11 +1458,14 @@
                 <p class="card-desc">E-commerce inventory and pricing matrix using table headers, colspans, and rowspans.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day9/product.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day9/product.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day9/recclg.html" class="task-card" data-category="html" data-tags="day9 tables college timetable departments">
+            <a href="html/Day9/recclg.html" class="task-card" data-category="html" data-tags="day9 tables college timetable departments schedule">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 9</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -807,11 +1474,14 @@
                 <p class="card-desc">Complex timetable layout with merged header cells, lab sessions, and lecture periods.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day9/recclg.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day9/recclg.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day9/SLAform.html" class="task-card" data-category="html" data-tags="day9 tables sla form admission agreement">
+            <a href="html/Day9/SLAform.html" class="task-card" data-category="html" data-tags="day9 tables sla form admission agreement contract">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 9</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -820,12 +1490,15 @@
                 <p class="card-desc">Hybrid document integrating data tables with official agreement form elements.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day9/SLAform.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day9/SLAform.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 10 Semantic Pages -->
-            <a href="html/Day10/clgadmission.html" class="task-card" data-category="html" data-tags="day10 college admission semantic html5">
+            <a href="html/Day10/clgadmission.html" class="task-card" data-category="html" data-tags="day10 college admission semantic html5 header nav aside section">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 10</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -834,11 +1507,14 @@
                 <p class="card-desc">Full semantic structure utilizing header, nav, section, article, aside, and footer.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day10/clgadmission.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day10/clgadmission.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day10/docstructure.html" class="task-card" data-category="html" data-tags="day10 document semantic layout">
+            <a href="html/Day10/docstructure.html" class="task-card" data-category="html" data-tags="day10 document semantic layout blueprint">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 10</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -847,11 +1523,14 @@
                 <p class="card-desc">Architectural blueprint of modern semantic HTML5 web document standards.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day10/docstructure.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day10/docstructure.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day10/itcompany.html" class="task-card" data-category="html" data-tags="day10 it company corporate semantic">
+            <a href="html/Day10/itcompany.html" class="task-card" data-category="html" data-tags="day10 it company corporate semantic enterprise">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 10</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -860,11 +1539,14 @@
                 <p class="card-desc">Software enterprise portal highlighting tech stacks, client reviews, and service packages.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day10/itcompany.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day10/itcompany.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day10/portflio.html" class="task-card" data-category="html" data-tags="day10 portfolio developer resume semantic">
+            <a href="html/Day10/portflio.html" class="task-card" data-category="html" data-tags="day10 portfolio developer resume semantic skills">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 10</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -873,11 +1555,14 @@
                 <p class="card-desc">Personal developer portfolio showcase with project cards, skill badges, and contact section.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day10/portflio.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day10/portflio.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day10/travel.html" class="task-card" data-category="html" data-tags="day10 travel tourism vacation destination">
+            <a href="html/Day10/travel.html" class="task-card" data-category="html" data-tags="day10 travel tourism vacation destination booking">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 10</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -886,12 +1571,15 @@
                 <p class="card-desc">Vacation discovery guide featuring destination highlights, travel packages, and photo cards.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day10/travel.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day10/travel.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- HTML Day 11 Multimedia & Embeds -->
-            <a href="html/Day11/alltask.html" class="task-card" data-category="html" data-tags="day11 media audio video iframe maps pdf showcase">
+            <a href="html/Day11/alltask.html" class="task-card" data-category="html" data-tags="day11 media audio video iframe maps pdf showcase master">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 11</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -900,7 +1588,10 @@
                 <p class="card-desc">Complete showcase aggregating audio, video players, Google Maps, YouTube, and PDF embeds.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day11/alltask.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day11/alltask.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
@@ -913,7 +1604,10 @@
                 <p class="card-desc">Custom audio integration featuring controls, autoplay, and audio source types.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day11/audio.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day11/audio.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
@@ -926,7 +1620,10 @@
                 <p class="card-desc">Responsive video player with controls, autoplay, custom width/height and fallbacks.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day11/video.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day11/video.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
@@ -939,11 +1636,14 @@
                 <p class="card-desc">Embedding external content: YouTube video player and interactive Google Maps location frame.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day11/iframe.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day11/iframe.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/Day11/imagetask.html" class="task-card" data-category="html" data-tags="day11 images butterfly gallery gallery">
+            <a href="html/Day11/imagetask.html" class="task-card" data-category="html" data-tags="day11 images butterfly gallery nature">
                 <div class="card-top">
                     <span class="card-day">HTML • Day 11</span>
                     <span class="card-tag tag-html">HTML5</span>
@@ -952,20 +1652,27 @@
                 <p class="card-desc">High-resolution image gallery showcasing nature photography and responsive image scaling.</p>
                 <div class="card-footer">
                     <span class="card-path">html/Day11/imagetask.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/Day11/imagetask.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="html/wikipedia/home.html" class="task-card" data-category="project" data-tags="wikipedia clone encyclopedia html project">
+            <!-- Wikipedia Project -->
+            <a href="html/wikipedia/home.html" class="task-card" data-category="project" data-tags="wikipedia clone encyclopedia html project portal multilingual">
                 <div class="card-top">
                     <span class="card-day">Project • Wikipedia</span>
                     <span class="card-tag tag-proj">Project</span>
                 </div>
-                <h3 class="card-title">Wikipedia Home Clone</h3>
-                <p class="card-desc">Faithful Wikipedia portal layout featuring multilingual search and top knowledge portals.</p>
+                <h3 class="card-title">Wikipedia Home Portal Clone</h3>
+                <p class="card-desc">Faithful Wikipedia portal layout featuring multilingual search, global links, and top knowledge portals.</p>
                 <div class="card-footer">
                     <span class="card-path">html/wikipedia/home.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="html/wikipedia/home.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
@@ -973,21 +1680,24 @@
             <!-- ===================== CSS TASKS ===================== -->
 
             <!-- CSS Assignment -->
-            <a href="css/Assignment/index.html" class="task-card" data-category="test" data-tags="css assignment landing page project">
+            <a href="css/Assignment/index.html" class="task-card" data-category="test" data-tags="css assignment landing page project master responsive">
                 <div class="card-top">
-                    <span class="card-day">CSS • Assignment</span>
-                    <span class="card-tag tag-proj">Assignment</span>
+                    <span class="card-day">CSS • Master Assignment</span>
+                    <span class="card-tag tag-test">Assignment</span>
                 </div>
                 <h3 class="card-title">CSS Master Assignment</h3>
                 <p class="card-desc">Polished responsive landing page implementing modern typography, navigation, and cards.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Assignment/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Assignment/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 1 -->
-            <a href="css/Day1/index.html" class="task-card" data-category="css" data-tags="css day1 external stylesheet basics">
+            <a href="css/Day1/index.html" class="task-card" data-category="css" data-tags="css day1 external stylesheet basics selectors">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 1</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -996,11 +1706,14 @@
                 <p class="card-desc">Introduction to external stylesheets, basic selectors, and element color styling.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day1/internal.html" class="task-card" data-category="css" data-tags="css day1 internal style tag">
+            <a href="css/Day1/internal.html" class="task-card" data-category="css" data-tags="css day1 internal style tag embedded">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 1</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1009,12 +1722,15 @@
                 <p class="card-desc">Applying embedded stylesheet rules within the document head for rapid styling.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day1/internal.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day1/internal.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 2 -->
-            <a href="css/Day2/challenge.html" class="task-card" data-category="css" data-tags="css day2 challenge box styling">
+            <a href="css/Day2/challenge.html" class="task-card" data-category="css" data-tags="css day2 challenge box styling gradients shadows">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 2</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1023,11 +1739,14 @@
                 <p class="card-desc">Solving advanced styling challenges with backgrounds, shadows, and typography.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day2/challenge.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day2/challenge.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day2/clgdeptpage.html" class="task-card" data-category="css" data-tags="css day2 college department design">
+            <a href="css/Day2/clgdeptpage.html" class="task-card" data-category="css" data-tags="css day2 college department design academic">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 2</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1036,11 +1755,14 @@
                 <p class="card-desc">Vibrant academic department showcase styled with modern color palettes and cards.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day2/clgdeptpage.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day2/clgdeptpage.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day2/company.html" class="task-card" data-category="css" data-tags="css day2 company profile corporate">
+            <a href="css/Day2/company.html" class="task-card" data-category="css" data-tags="css day2 company profile corporate hero">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 2</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1049,11 +1771,14 @@
                 <p class="card-desc">Professional corporate styling with hero banners, service cards, and footer layout.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day2/company.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day2/company.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day2/fav.html" class="task-card" data-category="css" data-tags="css day2 favourites cards styling">
+            <a href="css/Day2/fav.html" class="task-card" data-category="css" data-tags="css day2 favourites cards styling borders">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 2</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1062,11 +1787,14 @@
                 <p class="card-desc">Card-based visual presentation of favorite interests with borders and gradients.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day2/fav.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day2/fav.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day2/personalprofile.html" class="task-card" data-category="css" data-tags="css day2 profile card bio">
+            <a href="css/Day2/personalprofile.html" class="task-card" data-category="css" data-tags="css day2 profile card bio avatar">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 2</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1075,11 +1803,14 @@
                 <p class="card-desc">User profile avatar card featuring circular images, subtle shadows, and badge tags.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day2/personalprofile.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day2/personalprofile.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day2/studentid.html" class="task-card" data-category="css" data-tags="css day2 student id card badge identity">
+            <a href="css/Day2/studentid.html" class="task-card" data-category="css" data-tags="css day2 student id card badge identity barcode">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 2</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1088,12 +1819,15 @@
                 <p class="card-desc">Realistic plastic ID card design with barcode, photo frame, and institutional header.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day2/studentid.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day2/studentid.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 3 -->
-            <a href="css/Day3/index.html" class="task-card" data-category="css" data-tags="css day3 fonts colors background typography">
+            <a href="css/Day3/index.html" class="task-card" data-category="css" data-tags="css day3 fonts colors background typography gradients shadows">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 3</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1102,25 +1836,31 @@
                 <p class="card-desc">Google Fonts integration, font weights, line heights, gradients, and text shadows.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day3/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 4 Box Model -->
-            <a href="css/Day4/Task_1/index.html" class="task-card" data-category="css" data-tags="css day4 box model margin padding border">
+            <a href="css/Day4/Task_1/index.html" class="task-card" data-category="css" data-tags="css day4 box model margin padding border dimensions">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 4</span>
                     <span class="card-tag tag-css">CSS3</span>
                 </div>
-                <h3 class="card-title">Box Model: Task 1</h3>
+                <h3 class="card-title">Box Model: Task 1 (Core)</h3>
                 <p class="card-desc">Understanding box model dimensions: content width, padding, border, and margins.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day4/Task_1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day4/Task_1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day4/Task_2/index.html" class="task-card" data-category="css" data-tags="css day4 margin padding spacing">
+            <a href="css/Day4/Task_2/index.html" class="task-card" data-category="css" data-tags="css day4 margin padding spacing shorthand">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 4</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1129,11 +1869,14 @@
                 <p class="card-desc">Spacing mastery using directional margin, padding shorthand, and auto-centering.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day4/Task_2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day4/Task_2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day4/Task_3/index.html" class="task-card" data-category="css" data-tags="css day4 borders outline radius">
+            <a href="css/Day4/Task_3/index.html" class="task-card" data-category="css" data-tags="css day4 borders outline radius styles">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 4</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1142,11 +1885,14 @@
                 <p class="card-desc">Custom border radius, styled border types (dashed, solid, double), and outlines.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day4/Task_3/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day4/Task_3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day4/Task_4/index.html" class="task-card" data-category="css" data-tags="css day4 display inline block inline-block">
+            <a href="css/Day4/Task_4/index.html" class="task-card" data-category="css" data-tags="css day4 display inline block inline-block flow">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 4</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1155,11 +1901,14 @@
                 <p class="card-desc">Comparing block, inline, inline-block, and none display property behaviors.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day4/Task_4/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day4/Task_4/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day4/Task_5/index.html" class="task-card" data-category="css" data-tags="css day4 box-sizing border-box">
+            <a href="css/Day4/Task_5/index.html" class="task-card" data-category="css" data-tags="css day4 box-sizing border-box content-box">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 4</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1168,12 +1917,15 @@
                 <p class="card-desc">Deep dive into border-box vs content-box calculation in real-world layouts.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day4/Task_5/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day4/Task_5/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 5 Positioning -->
-            <a href="css/Day5/index.html" class="task-card" data-category="css" data-tags="css day5 position relative absolute fixed sticky z-index">
+            <a href="css/Day5/index.html" class="task-card" data-category="css" data-tags="css day5 position relative absolute fixed sticky z-index layers">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 5</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1182,12 +1934,15 @@
                 <p class="card-desc">Hands-on mastery of relative, absolute, fixed, and sticky positioning with layering.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day5/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day5/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 6 Flexbox -->
-            <a href="css/Day6/Task1/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox flex-direction align justify">
+            <a href="css/Day6/Task1/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox flex-direction align justify axis">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 6</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1196,11 +1951,14 @@
                 <p class="card-desc">Establishing flex containers, main-axis vs cross-axis alignment, and item flow.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day6/Task1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day6/Task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day6/Task2/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox justify-content align-items">
+            <a href="css/Day6/Task2/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox justify-content align-items centering">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 6</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1209,11 +1967,14 @@
                 <p class="card-desc">Space-between, space-around, space-evenly, and perfect center positioning.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day6/Task2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day6/Task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day6/Task3/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox flex-wrap gap">
+            <a href="css/Day6/Task3/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox flex-wrap gap catalog">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 6</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1222,11 +1983,14 @@
                 <p class="card-desc">Responsive wrapping behavior and gap spacing for multi-item catalogs.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day6/Task3/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day6/Task3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day6/Task4/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox card layout project">
+            <a href="css/Day6/Task4/index.html" class="task-card" data-category="css" data-tags="css day6 flexbox card layout product columns">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 6</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1235,12 +1999,15 @@
                 <p class="card-desc">Building responsive product card grids with equal height columns using Flexbox.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day6/Task4/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day6/Task4/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 9 Grid -->
-            <a href="css/Day9/Task1/index.html" class="task-card" data-category="css" data-tags="css day9 grid display-grid template-columns">
+            <a href="css/Day9/Task1/index.html" class="task-card" data-category="css" data-tags="css day9 grid display-grid template-columns fr units">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 9</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1249,11 +2016,14 @@
                 <p class="card-desc">2D Grid layout system with grid-template-columns, rows, and fr units.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day9/Task1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day9/Task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day9/Task2/index.html" class="task-card" data-category="css" data-tags="css day9 grid template areas header aside footer">
+            <a href="css/Day9/Task2/index.html" class="task-card" data-category="css" data-tags="css day9 grid template areas header aside footer layout">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 9</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1262,11 +2032,14 @@
                 <p class="card-desc">Named grid areas for complete web page layout (Header, Nav, Sidebar, Main, Footer).</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day9/Task2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day9/Task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day9/Task3/index.html" class="task-card" data-category="css" data-tags="css day9 grid auto-fit minmax responsive">
+            <a href="css/Day9/Task3/index.html" class="task-card" data-category="css" data-tags="css day9 grid auto-fit minmax responsive formula">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 9</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1275,11 +2048,14 @@
                 <p class="card-desc">Auto-fit and minmax formulas for responsive card layouts without media queries.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day9/Task3/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day9/Task3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day9/Task4/index.html" class="task-card" data-category="css" data-tags="css day9 grid photo gallery masonry">
+            <a href="css/Day9/Task4/index.html" class="task-card" data-category="css" data-tags="css day9 grid photo gallery masonry spans">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 9</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1288,11 +2064,14 @@
                 <p class="card-desc">Masonry-inspired photo gallery utilizing spans across columns and rows.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day9/Task4/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day9/Task4/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day9/Task5/index.html" class="task-card" data-category="css" data-tags="css day9 grid complex dashboard">
+            <a href="css/Day9/Task5/index.html" class="task-card" data-category="css" data-tags="css day9 grid complex dashboard multi-tier nested">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 9</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1301,12 +2080,15 @@
                 <p class="card-desc">Advanced multi-tier dashboard layout combining CSS Grid and nested Flexbox items.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day9/Task5/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day9/Task5/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Day 10 Animations & Responsive -->
-            <a href="css/Day10/task1/index.html" class="task-card" data-category="css" data-tags="css day10 transitions hover transform">
+            <a href="css/Day10/task1/index.html" class="task-card" data-category="css" data-tags="css day10 transitions hover transform scaling glowing">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 10</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1315,11 +2097,14 @@
                 <p class="card-desc">Smooth interactive transitions, button scaling, and glowing card hover states.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day10/task1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day10/task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day10/task2/index.html" class="task-card" data-category="css" data-tags="css day10 keyframes animation pulse rotate">
+            <a href="css/Day10/task2/index.html" class="task-card" data-category="css" data-tags="css day10 keyframes animation pulse rotate spinner floating">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 10</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1328,11 +2113,14 @@
                 <p class="card-desc">Dynamic CSS @keyframes animation sequences (spinners, floating elements, pulses).</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day10/task2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day10/task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Day10/task4/index.html" class="task-card" data-category="css" data-tags="css day10 media queries responsive mobile">
+            <a href="css/Day10/task4/index.html" class="task-card" data-category="css" data-tags="css day10 media queries responsive mobile tablet breakpoints">
                 <div class="card-top">
                     <span class="card-day">CSS • Day 10</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1341,252 +2129,96 @@
                 <p class="card-desc">Device breakpoints adapting layouts smoothly for Mobile, Tablet, and Desktop screens.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Day10/task4/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Day10/task4/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- CSS Tests -->
-            <a href="css/Test/task1/index.html" class="task-card" data-category="test" data-tags="css test assessment task1">
+            <a href="css/Test/task1/index.html" class="task-card" data-category="test" data-tags="css test assessment task1 evaluation selectors box model">
                 <div class="card-top">
                     <span class="card-day">CSS • Practical Test</span>
-                    <span class="card-tag tag-proj">Test 1</span>
+                    <span class="card-tag tag-test">Test 1</span>
                 </div>
                 <h3 class="card-title">CSS Assessment: Task 1</h3>
                 <p class="card-desc">Practical evaluation test assessing core selectors and box model implementation.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Test/task1/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Test/task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Test/task2/index.html" class="task-card" data-category="test" data-tags="css test assessment task2">
+            <a href="css/Test/task2/index.html" class="task-card" data-category="test" data-tags="css test assessment task2 evaluation navigation typography">
                 <div class="card-top">
                     <span class="card-day">CSS • Practical Test</span>
-                    <span class="card-tag tag-proj">Test 2</span>
+                    <span class="card-tag tag-test">Test 2</span>
                 </div>
                 <h3 class="card-title">CSS Assessment: Task 2</h3>
                 <p class="card-desc">Practical evaluation test assessing navigation menus and typography styling.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Test/task2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Test/task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Test/task3/index.html" class="task-card" data-category="test" data-tags="css test assessment task3">
+            <a href="css/Test/task3/index.html" class="task-card" data-category="test" data-tags="css test assessment task3 evaluation flexbox centering multi-column">
                 <div class="card-top">
                     <span class="card-day">CSS • Practical Test</span>
-                    <span class="card-tag tag-proj">Test 3</span>
+                    <span class="card-tag tag-test">Test 3</span>
                 </div>
                 <h3 class="card-title">CSS Assessment: Task 3</h3>
                 <p class="card-desc">Practical evaluation test assessing Flexbox centering and multi-column alignment.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Test/task3/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Test/task3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Test/task4/index.html" class="task-card" data-category="test" data-tags="css test assessment task4">
+            <a href="css/Test/task4/index.html" class="task-card" data-category="test" data-tags="css test assessment task4 evaluation positioning absolute overlays badges">
                 <div class="card-top">
                     <span class="card-day">CSS • Practical Test</span>
-                    <span class="card-tag tag-proj">Test 4</span>
+                    <span class="card-tag tag-test">Test 4</span>
                 </div>
                 <h3 class="card-title">CSS Assessment: Task 4</h3>
                 <p class="card-desc">Practical evaluation test assessing positioning, absolute overlays, and badges.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Test/task4/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Test/task4/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-            <a href="css/Test/task5/index.html" class="task-card" data-category="test" data-tags="css test assessment task5">
+            <a href="css/Test/task5/index.html" class="task-card" data-category="test" data-tags="css test assessment task5 evaluation responsive landing page">
                 <div class="card-top">
                     <span class="card-day">CSS • Practical Test</span>
-                    <span class="card-tag tag-proj">Test 5</span>
+                    <span class="card-tag tag-test">Test 5</span>
                 </div>
                 <h3 class="card-title">CSS Assessment: Task 5</h3>
                 <p class="card-desc">Comprehensive test project building a fully responsive multi-section landing page.</p>
                 <div class="card-footer">
                     <span class="card-path">css/Test/task5/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="css/Test/task5/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
-
-            <!-- ===================== BOOTSTRAP TASKS ===================== -->
-
-            <a href="bs/Day2/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 grid container row col">
-                <div class="card-top">
-                    <span class="card-day">Bootstrap • Day 2</span>
-                    <span class="card-tag tag-bs">Bootstrap 5</span>
-                </div>
-                <h3 class="card-title">Bootstrap Grid & Containers</h3>
-                <p class="card-desc">Container fluid, rows, columns, and 12-column responsive layout breakpoints.</p>
-                <div class="card-footer">
-                    <span class="card-path">bs/Day2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="bs/Day2practie/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 practice components buttons badges">
-                <div class="card-top">
-                    <span class="card-day">Bootstrap • Day 2</span>
-                    <span class="card-tag tag-bs">Bootstrap 5</span>
-                </div>
-                <h3 class="card-title">Bootstrap Core Components</h3>
-                <p class="card-desc">Button variations, badges, alerts, progress bars, and typography classes.</p>
-                <div class="card-footer">
-                    <span class="card-path">bs/Day2practie/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="bs/Day2practie/practice/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 deep practice layout">
-                <div class="card-top">
-                    <span class="card-day">Bootstrap • Day 2</span>
-                    <span class="card-tag tag-bs">Bootstrap 5</span>
-                </div>
-                <h3 class="card-title">Bootstrap Extended Practice</h3>
-                <p class="card-desc">Detailed hands-on exercises creating responsive hero sections and action cards.</p>
-                <div class="card-footer">
-                    <span class="card-path">bs/Day2practie/practice/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="bs/Day3/index.html" class="task-card" data-category="bs" data-tags="bootstrap day3 cards navbar carousel modal">
-                <div class="card-top">
-                    <span class="card-day">Bootstrap • Day 3</span>
-                    <span class="card-tag tag-bs">Bootstrap 5</span>
-                </div>
-                <h3 class="card-title">Navbar & Carousel Components</h3>
-                <p class="card-desc">Responsive collapsible navbar, image slider carousel, and rich card components.</p>
-                <div class="card-footer">
-                    <span class="card-path">bs/Day3/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="bs/Day4/task1.html" class="task-card" data-category="bs" data-tags="bootstrap day4 modal dialog accordion task1">
-                <div class="card-top">
-                    <span class="card-day">Bootstrap • Day 4</span>
-                    <span class="card-tag tag-bs">Bootstrap 5</span>
-                </div>
-                <h3 class="card-title">Modals & Collapse: Task 1</h3>
-                <p class="card-desc">Interactive popup modals, collapse toggles, and animated accordion FAQs.</p>
-                <div class="card-footer">
-                    <span class="card-path">bs/Day4/task1.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="bs/Day4/task3.html" class="task-card" data-category="bs" data-tags="bootstrap day4 forms input-group task3">
-                <div class="card-top">
-                    <span class="card-day">Bootstrap • Day 4</span>
-                    <span class="card-tag tag-bs">Bootstrap 5</span>
-                </div>
-                <h3 class="card-title">Bootstrap Forms: Task 3</h3>
-                <p class="card-desc">Styled form controls, input groups, floating labels, and form validation classes.</p>
-                <div class="card-footer">
-                    <span class="card-path">bs/Day4/task3.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="bs/Day4/task4.html" class="task-card" data-category="bs" data-tags="bootstrap day4 utilities flex spacing task4">
-                <div class="card-top">
-                    <span class="card-day">Bootstrap • Day 4</span>
-                    <span class="card-tag tag-bs">Bootstrap 5</span>
-                </div>
-                <h3 class="card-title">Bootstrap Utilities: Task 4</h3>
-                <p class="card-desc">Comprehensive utility classes for spacing (m, p), borders, shadows, and colors.</p>
-                <div class="card-footer">
-                    <span class="card-path">bs/Day4/task4.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-
-            <!-- ===================== PROJECTS & CLASSWORK ===================== -->
-
-            <a href="school/index.html" class="task-card" data-category="project" data-tags="school project multipage website home campus">
-                <div class="card-top">
-                    <span class="card-day">School Project</span>
-                    <span class="card-tag tag-proj">Project</span>
-                </div>
-                <h3 class="card-title">School Website: Home Portal</h3>
-                <p class="card-desc">Official institution homepage with banner, announcements, principal message, and navigation.</p>
-                <div class="card-footer">
-                    <span class="card-path">school/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="school/about.html" class="task-card" data-category="project" data-tags="school project about us history vision mission">
-                <div class="card-top">
-                    <span class="card-day">School Project</span>
-                    <span class="card-tag tag-proj">Project</span>
-                </div>
-                <h3 class="card-title">School Website: About Us</h3>
-                <p class="card-desc">School history, core values, mission statement, and administrative leadership.</p>
-                <div class="card-footer">
-                    <span class="card-path">school/about.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="school/academics.html" class="task-card" data-category="project" data-tags="school project academics curriculum courses">
-                <div class="card-top">
-                    <span class="card-day">School Project</span>
-                    <span class="card-tag tag-proj">Project</span>
-                </div>
-                <h3 class="card-title">School Website: Academics</h3>
-                <p class="card-desc">Educational curriculum, subject syllabus, academic calendar, and exam policies.</p>
-                <div class="card-footer">
-                    <span class="card-path">school/academics.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="school/facilities.html" class="task-card" data-category="project" data-tags="school project facilities lab library sports">
-                <div class="card-top">
-                    <span class="card-day">School Project</span>
-                    <span class="card-tag tag-proj">Project</span>
-                </div>
-                <h3 class="card-title">School Website: Facilities</h3>
-                <p class="card-desc">Campus facilities showcase including science labs, sports arena, library, and cafeteria.</p>
-                <div class="card-footer">
-                    <span class="card-path">school/facilities.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="school/gallery.html" class="task-card" data-category="project" data-tags="school project photo gallery events campus">
-                <div class="card-top">
-                    <span class="card-day">School Project</span>
-                    <span class="card-tag tag-proj">Project</span>
-                </div>
-                <h3 class="card-title">School Website: Photo Gallery</h3>
-                <p class="card-desc">Memories, cultural fest photos, annual sports meet, and campus architecture gallery.</p>
-                <div class="card-footer">
-                    <span class="card-path">school/gallery.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="school/contact.html" class="task-card" data-category="project" data-tags="school project contact inquiry admission location">
-                <div class="card-top">
-                    <span class="card-day">School Project</span>
-                    <span class="card-tag tag-proj">Project</span>
-                </div>
-                <h3 class="card-title">School Website: Contact Us</h3>
-                <p class="card-desc">Admission helpdesk, campus address, telephone directory, and location map.</p>
-                <div class="card-footer">
-                    <span class="card-path">school/contact.html</span>
-                    <span class="card-action">Open &rarr;</span>
-                </div>
-            </a>
-
-            <a href="classwork/cssday2/index.html" class="task-card" data-category="css" data-tags="classwork css day2 live practice">
+            <!-- CSS Classwork -->
+            <a href="classwork/cssday2/index.html" class="task-card" data-category="css" data-tags="classwork css day2 live practice layout card">
                 <div class="card-top">
                     <span class="card-day">Classwork</span>
                     <span class="card-tag tag-css">CSS3</span>
@@ -1595,44 +2227,287 @@
                 <p class="card-desc">Live classwork lab exercises focusing on CSS styling patterns and layout techniques.</p>
                 <div class="card-footer">
                     <span class="card-path">classwork/cssday2/index.html</span>
-                    <span class="card-action">Open &rarr;</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="classwork/cssday2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+
+            <!-- ===================== BOOTSTRAP TASKS ===================== -->
+
+            <a href="bs/Day2/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 grid container row col 12-column responsive">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 2</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Grid & Containers</h3>
+                <p class="card-desc">Container fluid, rows, columns, and 12-column responsive layout breakpoints.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day2/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="bs/Day2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bs/Day2practie/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 practice components buttons badges alerts progress">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 2</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Core Components</h3>
+                <p class="card-desc">Button variations, badges, alerts, progress bars, and typography classes.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day2practie/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="bs/Day2practie/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bs/Day2practie/practice/index.html" class="task-card" data-category="bs" data-tags="bootstrap day2 deep practice layout hero action cards">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 2</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Extended Practice</h3>
+                <p class="card-desc">Detailed hands-on exercises creating responsive hero sections and action cards.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day2practie/practice/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="bs/Day2practie/practice/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bs/Day3/index.html" class="task-card" data-category="bs" data-tags="bootstrap day3 cards navbar carousel modal slider">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 3</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Navbar & Carousel Components</h3>
+                <p class="card-desc">Responsive collapsible navbar, image slider carousel, and rich card components.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day3/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="bs/Day3/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bs/Day4/task1.html" class="task-card" data-category="bs" data-tags="bootstrap day4 modal dialog accordion task1 collapse popup faq">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 4</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Modals & Collapse: Task 1</h3>
+                <p class="card-desc">Interactive popup modals, collapse toggles, and animated accordion FAQs.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day4/task1.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="bs/Day4/task1.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bs/Day4/task3.html" class="task-card" data-category="bs" data-tags="bootstrap day4 forms input-group task3 validation controls floating">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 4</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Forms: Task 3</h3>
+                <p class="card-desc">Styled form controls, input groups, floating labels, and form validation classes.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day4/task3.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="bs/Day4/task3.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="bs/Day4/task4.html" class="task-card" data-category="bs" data-tags="bootstrap day4 utilities flex spacing task4 margins padding borders">
+                <div class="card-top">
+                    <span class="card-day">Bootstrap • Day 4</span>
+                    <span class="card-tag tag-bs">Bootstrap 5</span>
+                </div>
+                <h3 class="card-title">Bootstrap Utilities: Task 4</h3>
+                <p class="card-desc">Comprehensive utility classes for spacing (m, p), borders, shadows, and colors.</p>
+                <div class="card-footer">
+                    <span class="card-path">bs/Day4/task4.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="bs/Day4/task4.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+
+            <!-- ===================== PROJECTS & SCHOOL ===================== -->
+
+            <a href="school/index.html" class="task-card" data-category="project" data-tags="school project multipage website home campus principal announcements">
+                <div class="card-top">
+                    <span class="card-day">School • Multi-Page</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Home Portal</h3>
+                <p class="card-desc">Official institution homepage with banner, announcements, principal message, and navigation.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="school/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="school/about.html" class="task-card" data-category="project" data-tags="school project about us history vision mission leadership">
+                <div class="card-top">
+                    <span class="card-day">School • Multi-Page</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: About Us</h3>
+                <p class="card-desc">School history, core values, mission statement, and administrative leadership.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/about.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="school/about.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="school/academics.html" class="task-card" data-category="project" data-tags="school project academics curriculum courses syllabus exam calendar">
+                <div class="card-top">
+                    <span class="card-day">School • Multi-Page</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Academics</h3>
+                <p class="card-desc">Educational curriculum, subject syllabus, academic calendar, and exam policies.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/academics.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="school/academics.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="school/facilities.html" class="task-card" data-category="project" data-tags="school project facilities lab library sports arena cafeteria">
+                <div class="card-top">
+                    <span class="card-day">School • Multi-Page</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Facilities</h3>
+                <p class="card-desc">Campus facilities showcase including science labs, sports arena, library, and cafeteria.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/facilities.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="school/facilities.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="school/gallery.html" class="task-card" data-category="project" data-tags="school project photo gallery events campus fest annual sports">
+                <div class="card-top">
+                    <span class="card-day">School • Multi-Page</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Photo Gallery</h3>
+                <p class="card-desc">Memories, cultural fest photos, annual sports meet, and campus architecture gallery.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/gallery.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="school/gallery.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="school/contact.html" class="task-card" data-category="project" data-tags="school project contact inquiry admission location map helpdesk">
+                <div class="card-top">
+                    <span class="card-day">School • Multi-Page</span>
+                    <span class="card-tag tag-proj">Project</span>
+                </div>
+                <h3 class="card-title">School Website: Contact Us</h3>
+                <p class="card-desc">Admission helpdesk, campus address, telephone directory, and location map.</p>
+                <div class="card-footer">
+                    <span class="card-path">school/contact.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="school/contact.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
                 </div>
             </a>
 
             <!-- Empty Search State -->
             <div id="noResults" class="no-results">
                 <h3>No matching tasks found</h3>
-                <p>Try searching for a different keyword such as "Day 5", "Form", "Flexbox", "Bootstrap", etc.</p>
+                <p>Try searching for a different keyword such as "Loops", "Grid", "Form", "Flexbox", "Destructuring", "Bootstrap", etc.</p>
+                <button class="btn-reset-search" id="btnResetSearch">Clear Filter & Search</button>
             </div>
         </div>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; Frontend Development Learning Repository • All Tasks Connected & Verified</p>
+            <p>&copy; Frontend & JavaScript Full Stack Development Repository • <strong>All Modules Connected & Verified</strong></p>
         </footer>
     </div>
 
-    <!-- Interactive Filtering & Search Script -->
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span>&#10003;</span>
+        <span id="toastMsg">Path copied to clipboard!</span>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="btn-back-top" id="btnBackTop" title="Back to top">
+        &uarr;
+    </button>
+
+    <!-- Interactive Filtering, Search & Copy Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('taskSearch');
             const filterBtns = document.querySelectorAll('.filter-btn');
             const cards = document.querySelectorAll('.task-card');
             const noResults = document.getElementById('noResults');
+            const btnResetSearch = document.getElementById('btnResetSearch');
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const btnBackTop = document.getElementById('btnBackTop');
 
-            // Update Counts Dynamically
+            // Category Counts
             const allCount = cards.length;
             const htmlCount = document.querySelectorAll('.task-card[data-category="html"]').length;
             const cssCount = document.querySelectorAll('.task-card[data-category="css"]').length;
             const bsCount = document.querySelectorAll('.task-card[data-category="bs"]').length;
+            const jsCount = document.querySelectorAll('.task-card[data-category="js"]').length;
             const projCount = document.querySelectorAll('.task-card[data-category="project"]').length;
             const testCount = document.querySelectorAll('.task-card[data-category="test"]').length;
 
+            // Update Header Stats & Filter Badges
             document.getElementById('totalTasksCount').textContent = allCount;
+            document.getElementById('statHtmlCount').textContent = htmlCount;
+            document.getElementById('statCssCount').textContent = cssCount;
+            document.getElementById('statBsCount').textContent = bsCount;
+            document.getElementById('statJsCount').textContent = jsCount;
+            document.getElementById('statProjCount').textContent = projCount;
+            document.getElementById('statTestCount').textContent = testCount;
+
             document.getElementById('allCount').textContent = allCount;
             document.getElementById('htmlCount').textContent = htmlCount;
             document.getElementById('cssCount').textContent = cssCount;
             document.getElementById('bsCount').textContent = bsCount;
+            document.getElementById('jsCount').textContent = jsCount;
             document.getElementById('projCount').textContent = projCount;
             document.getElementById('testCount').textContent = testCount;
 
@@ -1685,6 +2560,61 @@
 
             // Search input typing
             searchInput.addEventListener('input', filterTasks);
+
+            // Reset search button
+            btnResetSearch.addEventListener('click', () => {
+                searchInput.value = '';
+                currentCategory = 'all';
+                filterBtns.forEach(b => b.classList.remove('active'));
+                document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+                filterTasks();
+                searchInput.focus();
+            });
+
+            // Keyboard shortcut '/' or 'Ctrl+K' / 'Cmd+K' to focus search
+            window.addEventListener('keydown', (e) => {
+                if ((e.key === '/' && document.activeElement !== searchInput) || 
+                    ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) {
+                    e.preventDefault();
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            });
+
+            // Copy Path Action
+            document.querySelectorAll('.btn-copy-path').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const path = btn.getAttribute('data-path');
+                    navigator.clipboard.writeText(path).then(() => {
+                        showToast(`Copied "${path}"`);
+                    }).catch(() => {
+                        showToast(`Path: ${path}`);
+                    });
+                });
+            });
+
+            function showToast(msg) {
+                toastMsg.textContent = msg;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            }
+
+            // Back to top scrolling
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btnBackTop.classList.add('show');
+                } else {
+                    btnBackTop.classList.remove('show');
+                }
+            });
+
+            btnBackTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </body>
