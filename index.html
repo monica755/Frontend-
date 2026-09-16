@@ -603,11 +603,11 @@
         <!-- Stats Grid -->
         <div class="stats-grid">
             <div class="stat-card stat-all">
-                <span class="stat-num" id="totalTasksCount">0</span>
+                <span class="stat-num" id="totalTasksCount">120</span>
                 <span class="stat-label">Total Modules</span>
             </div>
             <div class="stat-card stat-html">
-                <span class="stat-num" id="statHtmlCount">32</span>
+                <span class="stat-num" id="statHtmlCount">39</span>
                 <span class="stat-label">HTML5 Modules</span>
             </div>
             <div class="stat-card stat-css">
@@ -619,11 +619,11 @@
                 <span class="stat-label">Bootstrap 5</span>
             </div>
             <div class="stat-card stat-js">
-                <span class="stat-num" id="statJsCount">25</span>
+                <span class="stat-num" id="statJsCount">28</span>
                 <span class="stat-label">JavaScript ES6+</span>
             </div>
             <div class="stat-card stat-proj">
-                <span class="stat-num" id="statProjCount">8</span>
+                <span class="stat-num" id="statProjCount">10</span>
                 <span class="stat-label">Full Projects</span>
             </div>
             <div class="stat-card stat-test">
@@ -642,13 +642,13 @@
                 <span class="search-shortcut">/</span>
             </div>
             <div class="filters">
-                <button class="filter-btn active" data-filter="all">All Tasks <span class="filter-count" id="allCount">0</span></button>
-                <button class="filter-btn" data-filter="html">HTML5 <span class="filter-count" id="htmlCount">0</span></button>
-                <button class="filter-btn" data-filter="css">CSS3 <span class="filter-count" id="cssCount">0</span></button>
-                <button class="filter-btn" data-filter="bs">Bootstrap 5 <span class="filter-count" id="bsCount">0</span></button>
-                <button class="filter-btn" data-filter="js">JavaScript <span class="filter-count" id="jsCount">0</span></button>
-                <button class="filter-btn" data-filter="project">Projects & School <span class="filter-count" id="projCount">0</span></button>
-                <button class="filter-btn" data-filter="test">Tests & Practice <span class="filter-count" id="testCount">0</span></button>
+                <button class="filter-btn active" data-filter="all">All Tasks <span class="filter-count" id="allCount">120</span></button>
+                <button class="filter-btn" data-filter="html">HTML5 <span class="filter-count" id="htmlCount">39</span></button>
+                <button class="filter-btn" data-filter="css">CSS3 <span class="filter-count" id="cssCount">28</span></button>
+                <button class="filter-btn" data-filter="bs">Bootstrap 5 <span class="filter-count" id="bsCount">7</span></button>
+                <button class="filter-btn" data-filter="js">JavaScript <span class="filter-count" id="jsCount">28</span></button>
+                <button class="filter-btn" data-filter="project">Projects & School <span class="filter-count" id="projCount">10</span></button>
+                <button class="filter-btn" data-filter="test">Tests & Practice <span class="filter-count" id="testCount">8</span></button>
             </div>
         </div>
 
@@ -1040,18 +1040,86 @@
                 </div>
             </a>
 
-            <!-- JS Day 16 Task 1 -->
-            <a href="javascrpit/Day16/task1/index.html" class="task-card" data-category="js" data-tags="javascript js day16 task1 dom classlist add active class styling eventlistener click">
+            <!-- JS Day 16 (Tasks 1 & 2) -->
+            <a href="javascrpit/Day16/task1/index.html" class="task-card" data-category="js" data-tags="javascript js day16 task1 task2 dom classlist add remove toggle active class styling eventlistener click">
                 <div class="card-top">
                     <span class="card-day">JS • Day 16</span>
                     <span class="card-tag tag-js">JavaScript</span>
                 </div>
-                <h3 class="card-title">DOM Class Manipulation: Add Active Class</h3>
-                <p class="card-desc">Applying persistent style states dynamically using classList.add("active") to transform background color and text styling on button click.</p>
+                <h3 class="card-title">DOM Class Manipulation: Add & Remove Active Class (Tasks 1 & 2)</h3>
+                <p class="card-desc">Applying and removing dynamic element styles using classList.add("active") for Task 1 and classList.remove("active") with toggle interactions for Task 2 on button clicks.</p>
                 <div class="card-footer">
                     <span class="card-path">javascrpit/Day16/task1/index.html</span>
                     <div class="card-actions">
                         <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day16/task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 17 Task 1 -->
+            <a href="javascrpit/Day17/task1/index.html" class="task-card" data-category="js" data-tags="javascript js day17 task1 form student details inputs objects array dynamic dom createelement appendchild">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 17</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Student Directory & Dynamic DOM List</h3>
+                <p class="card-desc">Collecting student records via form inputs, storing objects in an array, and dynamically rendering cards using createElement and appendChild.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day17/task1/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day17/task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 17 Task 2 -->
+            <a href="javascrpit/Day17/task2/index.html" class="task-card" data-category="js" data-tags="javascript js day17 task2 employee form preventdefault submit table dynamic rows createelement reset">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 17</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Employee Records & Dynamic Table Generation</h3>
+                <p class="card-desc">Handling form submit events with preventDefault(), capturing employee data, dynamically generating table rows, and clearing fields via reset().</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day17/task2/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day17/task2/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 18 Task 1 -->
+            <a href="javascrpit/Day18/task1/index.html" class="task-card" data-category="js" data-tags="javascript js day18 task1 user registration authentication localstorage json stringify storage persistence">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 18</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">User Registration & LocalStorage Persistence</h3>
+                <p class="card-desc">Client-side user authentication registration, JSON object serialization, and persistent data storage using localStorage.setItem and JSON.stringify.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day18/task1/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day18/task1/index.html">&#128203;</button>
+                        <span class="card-action">Open &rarr;</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JS Day 19 Task 1 -->
+            <a href="javascrpit/Day19/task1/index.html" class="task-card" data-category="js" data-tags="javascript js day19 task1 asynchronous callbacks promises resolve reject then async await">
+                <div class="card-top">
+                    <span class="card-day">JS • Day 19</span>
+                    <span class="card-tag tag-js">JavaScript</span>
+                </div>
+                <h3 class="card-title">Asynchronous JavaScript: Callbacks & Promises</h3>
+                <p class="card-desc">Fundamentals of asynchronous JS programming covering callback execution, Promise constructor (resolve/reject), and chained .then() consumption.</p>
+                <div class="card-footer">
+                    <span class="card-path">javascrpit/Day19/task1/index.html</span>
+                    <div class="card-actions">
+                        <button class="btn-copy-path" title="Copy file path" data-path="javascrpit/Day19/task1/index.html">&#128203;</button>
                         <span class="card-action">Open &rarr;</span>
                     </div>
                 </div>
